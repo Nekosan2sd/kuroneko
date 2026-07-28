@@ -2,38 +2,28 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1, viewport-fit=cover"
-  >
-
-  <meta
-    name="description"
-    content="Kuronekoの自己紹介と制作物をまとめたホームページです。"
-  >
-
-  <meta name="theme-color" content="#eaf7ff">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Kuronekoの自己紹介と制作物をまとめたホームページです。">
+  <meta name="theme-color" content="#168ed2">
 
   <title>Kuroneko Home</title>
 
   <style>
     /* ========================================
-       基本カラー
+       基本カラー & 変数定義
     ======================================== */
-
     :root {
       color-scheme: light dark;
 
       --page-background: #dff3ff;
       --page-background-deep: #a9dcfa;
 
-      --panel-background: rgba(255, 255, 255, 0.9);
-      --card-background: rgba(255, 255, 255, 0.82);
+      --panel-background: rgba(255, 255, 255, 0.92);
+      --card-background: rgba(255, 255, 255, 0.85);
       --card-hover: rgba(255, 255, 255, 0.98);
 
       --text: #172033;
-      --subtext: #56647a;
+      --subtext: #4e5d78;
       --muted: #738197;
 
       --accent: #168ed2;
@@ -43,23 +33,20 @@
       --border: rgba(45, 86, 117, 0.2);
       --shadow: 0 16px 45px rgba(30, 76, 111, 0.16);
 
-      --radius-large: 30px;
-      --radius-medium: 22px;
+      --radius-large: 28px;
+      --radius-medium: 20px;
 
-      --content-width: 760px;
+      --content-width: 780px;
     }
 
-    /* ========================================
-       ダークモード
-    ======================================== */
-
+    /* ダークモード設定 */
     @media (prefers-color-scheme: dark) {
       :root {
         --page-background: #07101e;
         --page-background-deep: #102c47;
 
-        --panel-background: rgba(11, 21, 37, 0.92);
-        --card-background: rgba(20, 34, 54, 0.87);
+        --panel-background: rgba(11, 21, 37, 0.94);
+        --card-background: rgba(20, 34, 54, 0.88);
         --card-hover: rgba(28, 47, 73, 0.98);
 
         --text: #f2f7ff;
@@ -68,27 +55,17 @@
 
         --accent: #55c7ff;
         --accent-dark: #8fdcff;
-        --accent-soft: rgba(85, 199, 255, 0.13);
+        --accent-soft: rgba(85, 199, 255, 0.14);
 
-        --border: rgba(174, 214, 255, 0.16);
-        --shadow: 0 18px 50px rgba(0, 0, 0, 0.32);
+        --border: rgba(174, 214, 255, 0.18);
+        --shadow: 0 18px 50px rgba(0, 0, 0, 0.38);
       }
     }
 
     /* ========================================
-       リセット
+       リセット & 基本スタイル
     ======================================== */
-
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     html {
       scroll-behavior: smooth;
@@ -100,62 +77,24 @@
       min-width: 320px;
       min-height: 100vh;
       min-height: 100svh;
-
       overflow-x: hidden;
-
       color: var(--text);
-
-      font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        "Noto Sans JP",
-        "Hiragino Kaku Gothic ProN",
-        "Yu Gothic",
-        sans-serif;
-
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans JP", "Hiragino Kaku Gothic ProN", sans-serif;
       background:
-        radial-gradient(
-          circle at 10% 5%,
-          rgba(82, 198, 255, 0.26),
-          transparent 34%
-        ),
-        radial-gradient(
-          circle at 85% 80%,
-          rgba(81, 133, 255, 0.16),
-          transparent 35%
-        ),
-        linear-gradient(
-          145deg,
-          var(--page-background),
-          var(--page-background-deep)
-        );
+        radial-gradient(circle at 10% 5%, rgba(82, 198, 255, 0.26), transparent 34%),
+        radial-gradient(circle at 85% 80%, rgba(81, 133, 255, 0.16), transparent 35%),
+        linear-gradient(145deg, var(--page-background), var(--page-background-deep));
     }
 
-    button,
-    input,
-    a,
-    summary {
-      font: inherit;
-    }
-
+    button, input, a, summary { font: inherit; }
     a {
-      color: var(--accent-dark);
+      color: var(--accent);
       text-decoration-thickness: 1px;
       text-underline-offset: 4px;
       -webkit-tap-highlight-color: transparent;
     }
 
-    img,
-    svg {
-      display: block;
-      max-width: 100%;
-    }
-
-    /* ========================================
-       全体レイアウト
-    ======================================== */
-
+    /* 全体レイアウト */
     .site-layout {
       width: 100%;
       min-height: 100vh;
@@ -163,261 +102,141 @@
     }
 
     /* ========================================
-       左側ヒーローパネル
+       左側ヒーローパネル（あどたん風2カラム）
     ======================================== */
-
     .hero-panel {
       position: relative;
-
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-
       min-height: 640px;
-      padding:
-        max(30px, env(safe-area-inset-top))
-        32px
-        max(30px, env(safe-area-inset-bottom));
-
+      padding: max(30px, env(safe-area-inset-top)) 32px max(30px, env(safe-area-inset-bottom));
       overflow: hidden;
-
       background:
-        radial-gradient(
-          circle at 50% 35%,
-          rgba(255, 255, 255, 0.32),
-          transparent 36%
-        ),
-        linear-gradient(
-          160deg,
-          #76d2ff 0%,
-          #299ee0 55%,
-          #1768a4 100%
-        );
+        radial-gradient(circle at 50% 35%, rgba(255, 255, 255, 0.3), transparent 40%),
+        linear-gradient(160deg, #76d2ff 0%, #299ee0 55%, #1768a4 100%);
+      color: #ffffff;
     }
 
     .hero-panel::before {
       content: "";
-
       position: absolute;
-      top: -120px;
-      right: -120px;
-
-      width: 330px;
-      height: 330px;
-
-      border: 1px solid rgba(255, 255, 255, 0.24);
+      top: -120px; right: -120px;
+      width: 330px; height: 330px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
       border-radius: 50%;
-    }
-
-    .hero-panel::after {
-      content: "";
-
-      position: absolute;
-      bottom: -100px;
-      left: -100px;
-
-      width: 290px;
-      height: 290px;
-
-      border: 70px solid rgba(255, 255, 255, 0.08);
-      border-radius: 50%;
-    }
-
-    .hero-header,
-    .hero-visual,
-    .hero-footer {
-      position: relative;
-      z-index: 1;
     }
 
     .brand {
       display: flex;
       align-items: center;
       gap: 16px;
+      z-index: 2;
     }
 
     .brand-logo {
       display: grid;
-      flex: 0 0 auto;
       place-items: center;
-
-      width: 74px;
-      height: 74px;
-
-      border: 1px solid rgba(255, 255, 255, 0.42);
-      border-radius: 22px;
-
-      background: rgba(255, 255, 255, 0.2);
-      box-shadow: 0 12px 35px rgba(0, 43, 82, 0.18);
-
-      font-size: 2.7rem;
-      line-height: 1;
-
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      width: 68px; height: 68px;
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.22);
+      box-shadow: 0 10px 30px rgba(0, 43, 82, 0.2);
+      font-size: 2.5rem;
+      backdrop-filter: blur(10px);
     }
 
     .brand-label {
-      display: block;
-
-      color: rgba(255, 255, 255, 0.77);
-
       font-size: 0.75rem;
       font-weight: 800;
       letter-spacing: 0.15em;
       text-transform: uppercase;
+      opacity: 0.85;
     }
 
     .brand-name {
-      margin-top: 2px;
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+    }
 
-      color: #ffffff;
+    /* アクセスカウンター風バッジ（あどたん再現） */
+    .retro-counter-box {
+      margin-top: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 14px;
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 8px;
+      font-family: monospace;
+      font-size: 0.82rem;
+      backdrop-filter: blur(8px);
+    }
 
-      font-size: clamp(1.55rem, 3vw, 2.25rem);
-      font-weight: 850;
-      line-height: 1.1;
-      letter-spacing: -0.04em;
+    .retro-counter-num {
+      background: #000;
+      color: #00ff66;
+      padding: 2px 8px;
+      border-radius: 4px;
+      letter-spacing: 2px;
+      font-weight: bold;
+      border: 1px solid #00aa44;
+      box-shadow: inset 0 0 5px rgba(0,255,102,0.5);
     }
 
     .hero-visual {
       display: grid;
       place-items: center;
-
-      width: min(420px, 90%);
-      min-height: 330px;
-
-      margin: 42px auto 34px;
-
-      border: 1px solid rgba(255, 255, 255, 0.38);
-      border-radius: 42px;
-
-      background:
-        linear-gradient(
-          145deg,
-          rgba(255, 255, 255, 0.25),
-          rgba(255, 255, 255, 0.1)
-        );
-
-      box-shadow:
-        0 25px 65px rgba(0, 51, 94, 0.25),
-        inset 0 1px 0 rgba(255, 255, 255, 0.25);
-
+      width: min(380px, 90%);
+      min-height: 280px;
+      margin: 28px auto;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 32px;
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.08));
+      box-shadow: 0 20px 50px rgba(0, 51, 94, 0.25);
       overflow: hidden;
-
       backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
     }
 
-    /*
-      hero.webpがある場合は画像を表示します。
-      画像がない場合は下の黒猫マークが表示されます。
-    */
-
-    .hero-image {
-      display: none;
-
-      width: 100%;
-      height: 100%;
-
-      object-fit: cover;
-      object-position: center;
-    }
-
-    .hero-placeholder {
-      display: grid;
-      place-items: center;
-
-      width: 100%;
-      min-height: 330px;
-
-      color: #ffffff;
-
-      text-align: center;
-    }
-
-    .hero-placeholder-icon {
-      display: block;
-
-      margin-bottom: 18px;
-
-      font-size: clamp(5rem, 13vw, 8rem);
-      line-height: 1;
-    }
-
-    .hero-placeholder p {
-      color: rgba(255, 255, 255, 0.85);
-
-      font-size: 0.9rem;
-      font-weight: 700;
-      line-height: 1.6;
-    }
-
-    .hero-copy {
-      max-width: 520px;
-
-      color: #ffffff;
-    }
+    .hero-image { display: none; width: 100%; height: 100%; object-fit: cover; }
+    .hero-placeholder { text-align: center; padding: 20px; }
+    .hero-placeholder-icon { font-size: 5.5rem; display: block; margin-bottom: 10px; }
 
     .hero-copy h1 {
-      font-size: clamp(2.4rem, 6vw, 5rem);
+      font-size: clamp(2.2rem, 5vw, 4.2rem);
       font-weight: 900;
-      line-height: 0.98;
-      letter-spacing: -0.055em;
-
-      overflow-wrap: anywhere;
+      line-height: 1.05;
+      letter-spacing: -0.04em;
     }
 
     .hero-copy p {
-      margin-top: 17px;
-
-      color: rgba(255, 255, 255, 0.86);
-
-      font-size: clamp(0.95rem, 2vw, 1.08rem);
-      line-height: 1.75;
+      margin-top: 14px;
+      opacity: 0.9;
+      font-size: 0.98rem;
+      line-height: 1.7;
     }
 
     .hero-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 9px;
-
-      margin-top: 22px;
+      display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px;
     }
-
     .hero-tag {
-      padding: 8px 13px;
-
-      border: 1px solid rgba(255, 255, 255, 0.28);
+      padding: 6px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
       border-radius: 999px;
-
-      background: rgba(255, 255, 255, 0.14);
-      color: #ffffff;
-
+      background: rgba(255, 255, 255, 0.15);
       font-size: 0.78rem;
-      font-weight: 750;
+      font-weight: 700;
     }
 
-    .hero-footer {
-      margin-top: 36px;
-
-      color: rgba(255, 255, 255, 0.67);
-
-      font-size: 0.76rem;
-    }
+    .hero-footer { margin-top: 24px; opacity: 0.7; font-size: 0.78rem; }
 
     /* ========================================
-       右側コンテンツ
+       右側メインコンテンツ
     ======================================== */
-
     .content-panel {
-      min-width: 0;
-
-      padding:
-        max(26px, env(safe-area-inset-top))
-        max(22px, env(safe-area-inset-right))
-        max(45px, env(safe-area-inset-bottom))
-        max(22px, env(safe-area-inset-left));
-
+      padding: max(26px, env(safe-area-inset-top)) max(22px, env(safe-area-inset-right)) max(45px, env(safe-area-inset-bottom)) max(22px, env(safe-area-inset-left));
       background: var(--panel-background);
     }
 
@@ -426,706 +245,230 @@
       margin-inline: auto;
     }
 
-    .mobile-header {
-      display: none;
-
+    /* ⚠️ あどたん名物：警告バナー風コンポーネント */
+    .kao-banner {
+      background: linear-gradient(135deg, #ff4b4b, #d32f2f);
+      color: #ffffff;
+      padding: 16px 20px;
+      border-radius: 18px;
       margin-bottom: 20px;
-      padding: 13px 16px;
-
-      border: 1px solid var(--border);
-      border-radius: 17px;
-
-      background: var(--card-background);
-      box-shadow: var(--shadow);
-
+      box-shadow: 0 8px 24px rgba(211, 47, 47, 0.3);
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+    .kao-banner a {
+      color: #ffffff;
+      font-weight: 900;
+      font-size: 1.05rem;
+      text-decoration: underline;
+    }
+    .kao-timer {
+      display: inline-block;
+      margin-top: 6px;
+      font-family: monospace;
+      font-weight: bold;
+      background: rgba(0, 0, 0, 0.25);
+      padding: 3px 10px;
+      border-radius: 6px;
       font-size: 0.9rem;
-      font-weight: 800;
     }
 
-    /* ========================================
-       ナビゲーション
-    ======================================== */
+    /* Q&A 枠 */
+    .qa-box {
+      background: var(--accent-soft);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px;
+      margin-bottom: 24px;
+      font-size: 0.88rem;
+      line-height: 1.7;
+    }
+    .qa-title {
+      font-weight: bold;
+      color: var(--accent-dark);
+      font-size: 0.98rem;
+      margin-bottom: 6px;
+    }
 
+    /* ナビゲーション */
     .section-nav {
-      display: flex;
-      gap: 8px;
-
-      margin-bottom: 22px;
-      padding-bottom: 5px;
-
-      overflow-x: auto;
-      scrollbar-width: none;
+      display: flex; gap: 8px; margin-bottom: 22px; overflow-x: auto; scrollbar-width: none; padding-bottom: 4px;
     }
-
-    .section-nav::-webkit-scrollbar {
-      display: none;
-    }
-
+    .section-nav::-webkit-scrollbar { display: none; }
     .section-nav a {
       flex: 0 0 auto;
-
-      padding: 9px 14px;
-
+      padding: 8px 16px;
       border: 1px solid var(--border);
       border-radius: 999px;
-
       background: var(--card-background);
       color: var(--subtext);
-
-      font-size: 0.78rem;
-      font-weight: 750;
-
+      font-size: 0.82rem;
+      font-weight: 700;
       text-decoration: none;
-
-      transition:
-        color 160ms ease,
-        border-color 160ms ease,
-        background-color 160ms ease;
+      transition: all 160ms ease;
     }
-
-    .section-nav a:hover,
-    .section-nav a:focus-visible {
+    .section-nav a:hover {
       border-color: var(--accent);
       background: var(--accent-soft);
-      color: var(--accent-dark);
+      color: var(--accent);
     }
 
-    /* ========================================
-       セクションカード
-    ======================================== */
-
+    /* セクションカード群 */
     .profile-stack {
       border: 1px solid var(--border);
       border-radius: var(--radius-large);
-
       background: var(--card-background);
-
       box-shadow: var(--shadow);
-
       overflow: hidden;
     }
 
     .section-card {
-      position: relative;
-
-      padding: clamp(25px, 5vw, 43px);
+      padding: clamp(24px, 4vw, 38px);
     }
-
     .section-card + .section-card {
       border-top: 1px solid var(--border);
     }
 
     .section-heading {
-      display: flex;
-      align-items: center;
-      gap: 13px;
-
-      margin-bottom: 24px;
+      display: flex; align-items: center; gap: 12px; margin-bottom: 22px;
     }
-
     .heading-icon {
-      display: grid;
-      flex: 0 0 auto;
-      place-items: center;
-
-      width: 46px;
-      height: 46px;
-
+      display: grid; place-items: center;
+      width: 44px; height: 44px;
       border: 1px solid var(--border);
-      border-radius: 15px;
-
+      border-radius: 14px;
       background: var(--accent-soft);
-
-      font-size: 1.4rem;
-      line-height: 1;
+      font-size: 1.35rem;
     }
-
     .section-heading h2 {
-      font-size: clamp(1.45rem, 4vw, 2rem);
-      line-height: 1.25;
-      letter-spacing: -0.035em;
+      font-size: clamp(1.35rem, 3.5vw, 1.85rem);
+      letter-spacing: -0.03em;
     }
 
-    .section-description {
-      color: var(--subtext);
-
-      font-size: 0.95rem;
-      line-height: 1.85;
-    }
-
-    /* ========================================
-       プロフィール
-    ======================================== */
-
+    /* プロフィール */
     .profile-main {
-      display: grid;
-      grid-template-columns: auto minmax(0, 1fr);
-      align-items: center;
-      gap: 22px;
+      display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 20px;
     }
-
     .profile-avatar {
-      display: grid;
-      place-items: center;
-
-      width: 112px;
-      height: 112px;
-
-      border: 4px solid var(--accent-soft);
+      display: grid; place-items: center;
+      width: 104px; height: 104px;
+      border: 3px solid var(--accent);
       border-radius: 50%;
-
-      background:
-        linear-gradient(
-          145deg,
-          var(--accent-soft),
-          rgba(255, 255, 255, 0.15)
-        );
-
-      font-size: 3.4rem;
-      line-height: 1;
-
+      background: var(--accent-soft);
+      font-size: 3.2rem;
       overflow: hidden;
     }
+    .avatar-image { display: none; width: 100%; height: 100%; object-fit: cover; }
 
-    .avatar-image {
-      display: none;
-
-      width: 100%;
-      height: 100%;
-
-      object-fit: cover;
-    }
-
-    .profile-name {
-      font-size: clamp(1.55rem, 4vw, 2.25rem);
-      line-height: 1.2;
-      letter-spacing: -0.035em;
-    }
-
-    .profile-role {
-      margin-top: 6px;
-
-      color: var(--accent-dark);
-
-      font-size: 0.88rem;
-      font-weight: 800;
-    }
-
-    .profile-message {
-      margin-top: 12px;
-
-      color: var(--subtext);
-
-      font-size: 0.94rem;
-      line-height: 1.7;
-    }
+    .profile-name { font-size: clamp(1.5rem, 3.5vw, 2.1rem); font-weight: 900; }
+    .profile-role { color: var(--accent); font-size: 0.88rem; font-weight: 800; margin-top: 4px; }
+    .profile-message { color: var(--subtext); font-size: 0.92rem; line-height: 1.7; margin-top: 10px; }
 
     .profile-data {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-
-      margin-top: 25px;
+      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 22px;
     }
-
     .profile-item {
-      min-width: 0;
-      padding: 15px;
-
-      border: 1px solid var(--border);
-      border-radius: 16px;
-
-      background: var(--accent-soft);
+      padding: 14px; border: 1px solid var(--border); border-radius: 16px; background: var(--accent-soft);
     }
+    .profile-item dt { color: var(--muted); font-size: 0.7rem; font-weight: 800; text-transform: uppercase; }
+    .profile-item dd { color: var(--text); font-size: 0.92rem; font-weight: 700; margin-top: 4px; }
 
-    .profile-item dt {
-      color: var(--muted);
-
-      font-size: 0.7rem;
-      font-weight: 800;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-    }
-
-    .profile-item dd {
-      margin-top: 5px;
-
-      color: var(--text);
-
-      font-size: 0.94rem;
-      font-weight: 750;
-
-      overflow-wrap: anywhere;
-    }
-
-    /* ========================================
-       好きなもの
-    ======================================== */
-
+    /* 好きなこと */
     .interest-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
+      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px;
     }
-
     .interest-item {
-      padding: 17px;
-
-      border: 1px solid var(--border);
-      border-radius: 17px;
-
-      background: var(--accent-soft);
+      padding: 16px; border: 1px solid var(--border); border-radius: 16px; background: var(--accent-soft);
     }
+    .interest-icon { font-size: 1.4rem; margin-bottom: 8px; display: block; }
+    .interest-item h3 { font-size: 0.98rem; margin-bottom: 4px; }
+    .interest-item p { color: var(--subtext); font-size: 0.82rem; line-height: 1.55; }
 
-    .interest-icon {
-      display: block;
-
-      margin-bottom: 9px;
-
-      font-size: 1.45rem;
-    }
-
-    .interest-item h3 {
-      font-size: 1rem;
-    }
-
-    .interest-item p {
-      margin-top: 5px;
-
-      color: var(--subtext);
-
-      font-size: 0.83rem;
-      line-height: 1.55;
-    }
-
-    /* ========================================
-       制作物・リンク
-    ======================================== */
-
-    .link-list {
-      display: grid;
-      gap: 12px;
-
-      list-style: none;
-    }
-
+    /* 制作物 & リンクカード */
+    .link-list { display: grid; gap: 12px; list-style: none; }
     .link-card {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) auto;
-      align-items: center;
-      gap: 16px;
-
-      min-height: 82px;
-      padding: 17px 18px;
-
-      border: 1px solid var(--border);
-      border-radius: 18px;
-
-      background: var(--accent-soft);
-      color: var(--text);
-
-      text-decoration: none;
-
-      transition:
-        transform 160ms ease,
-        border-color 160ms ease,
-        background-color 160ms ease;
+      display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 16px;
+      padding: 16px 18px; border: 1px solid var(--border); border-radius: 18px;
+      background: var(--accent-soft); color: var(--text); text-decoration: none;
+      transition: transform 160ms ease, border-color 160ms ease;
     }
-
-    .link-card:hover,
-    .link-card:focus-visible {
-      border-color: var(--accent);
-      background: var(--card-hover);
-
-      transform: translateY(-2px);
-    }
-
-    .link-card:focus-visible,
-    summary:focus-visible,
-    .section-nav a:focus-visible {
-      outline: 3px solid var(--accent);
-      outline-offset: 3px;
-    }
-
-    .link-title {
-      font-size: 1rem;
-      font-weight: 800;
-    }
-
-    .link-description {
-      margin-top: 4px;
-
-      color: var(--subtext);
-
-      font-size: 0.82rem;
-      line-height: 1.55;
-    }
-
+    .link-card:hover { border-color: var(--accent); background: var(--card-hover); transform: translateY(-2px); }
+    .link-title { font-size: 0.98rem; font-weight: 800; display: block; }
+    .link-description { color: var(--subtext); font-size: 0.82rem; margin-top: 3px; display: block; }
     .link-arrow {
-      display: grid;
-      place-items: center;
-
-      width: 34px;
-      height: 34px;
-
-      border-radius: 50%;
-
-      background: var(--card-background);
-      color: var(--accent-dark);
-
-      font-weight: 900;
+      width: 32px; height: 32px; border-radius: 50%; background: var(--card-background);
+      color: var(--accent); font-weight: 900; display: grid; place-items: center;
     }
 
-    /* ========================================
-       使用環境
-    ======================================== */
+    /* 連絡先 & ゲームID（あどたんスタイル） */
+    .contact-list { list-style: none; display: grid; gap: 10px; font-size: 0.92rem; }
+    .contact-list li { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; border: 1px solid var(--border); border-radius: 12px; background: var(--accent-soft); }
+    .contact-list a { font-weight: bold; }
 
-    .environment-list {
-      display: grid;
-      gap: 10px;
-    }
-
-    .environment-item {
-      display: grid;
-      grid-template-columns: 130px minmax(0, 1fr);
-      gap: 18px;
-
-      padding: 13px 0;
-
-      border-bottom: 1px solid var(--border);
-    }
-
-    .environment-item:last-child {
-      border-bottom: 0;
-    }
-
-    .environment-item dt {
-      color: var(--muted);
-
-      font-size: 0.82rem;
-      font-weight: 800;
-    }
-
-    .environment-item dd {
-      color: var(--text);
-
-      font-size: 0.9rem;
-      line-height: 1.6;
-
-      overflow-wrap: anywhere;
-    }
-
-    /* ========================================
-       更新履歴
-    ======================================== */
-
-    .news-list {
-      display: grid;
-      gap: 0;
-
-      list-style: none;
-    }
-
-    .news-item {
-      display: grid;
-      grid-template-columns: 115px minmax(0, 1fr);
-      gap: 18px;
-
-      padding: 16px 0;
-
-      border-bottom: 1px solid var(--border);
-    }
-
-    .news-item:last-child {
-      border-bottom: 0;
-    }
-
-    .news-item time {
-      color: var(--accent-dark);
-
-      font-size: 0.8rem;
-      font-weight: 850;
-    }
-
-    .news-item p {
-      color: var(--subtext);
-
-      font-size: 0.9rem;
-      line-height: 1.6;
-    }
-
-    /* ========================================
-       もっと見る
-    ======================================== */
-
-    details {
-      margin-top: 23px;
-
-      border-top: 1px solid var(--border);
-    }
-
+    /* 折りたたみ (details / summary) */
+    details { margin-top: 18px; border-top: 1px solid var(--border); }
     summary {
-      position: relative;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      padding-top: 20px;
-
-      color: var(--accent-dark);
-
-      font-size: 0.9rem;
-      font-weight: 850;
-
-      cursor: pointer;
-      list-style: none;
-      user-select: none;
+      display: flex; align-items: center; justify-content: space-between;
+      padding-top: 16px; color: var(--accent); font-weight: 800; font-size: 0.88rem;
+      cursor: pointer; list-style: none; user-select: none;
     }
-
-    summary::-webkit-details-marker {
-      display: none;
-    }
-
+    summary::-webkit-details-marker { display: none; }
     summary::after {
-      content: "＋";
-
-      display: grid;
-      place-items: center;
-
-      width: 30px;
-      height: 30px;
-
-      border-radius: 50%;
-
-      background: var(--accent-soft);
-
-      font-size: 1rem;
-
-      transition: transform 180ms ease;
+      content: "＋"; display: grid; place-items: center; width: 28px; height: 28px;
+      border-radius: 50%; background: var(--accent-soft); font-size: 0.9rem;
     }
+    details[open] summary::after { content: "−"; }
+    .details-content { padding-top: 16px; color: var(--subtext); font-size: 0.88rem; line-height: 1.8; }
 
-    details[open] summary::after {
-      content: "−";
-      transform: rotate(180deg);
-    }
+    /* 制作環境 & 更新履歴 */
+    .environment-list { display: grid; gap: 10px; }
+    .environment-item { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 14px; padding: 10px 0; border-bottom: 1px solid var(--border); }
+    .environment-item:last-child { border-bottom: 0; }
+    .environment-item dt { color: var(--muted); font-size: 0.8rem; font-weight: 800; }
+    .environment-item dd { color: var(--text); font-size: 0.88rem; }
 
-    .details-content {
-      padding-top: 20px;
-    }
+    .news-list { display: grid; list-style: none; }
+    .news-item { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .news-item:last-child { border-bottom: 0; }
+    .news-item time { color: var(--accent); font-size: 0.82rem; font-weight: 800; }
+    .news-item p { color: var(--subtext); font-size: 0.88rem; }
 
-    .details-content p {
-      color: var(--subtext);
-
-      font-size: 0.9rem;
-      line-height: 1.85;
-    }
-
-    /* ========================================
-       フッター
-    ======================================== */
-
+    /* フッター */
     .page-footer {
-      margin-top: 22px;
-      padding: 26px 20px;
-
-      border: 1px solid var(--border);
-      border-radius: var(--radius-medium);
-
-      background: var(--card-background);
-      color: var(--muted);
-
-      box-shadow: var(--shadow);
-
-      font-size: 0.8rem;
-      line-height: 1.75;
-      text-align: center;
+      margin-top: 22px; padding: 24px 20px; border: 1px solid var(--border);
+      border-radius: var(--radius-medium); background: var(--card-background);
+      color: var(--muted); box-shadow: var(--shadow); font-size: 0.8rem; text-align: center; line-height: 1.7;
     }
 
-    /* ========================================
-       PC・大型iPad横向き
-    ======================================== */
-
+    /* =========================================
+       レスポンシブ (PC・タブレット・スマホ)
+    ========================================= */
     @media (min-width: 960px) {
       .site-layout {
         display: grid;
-        grid-template-columns: minmax(390px, 42%) minmax(0, 58%);
+        grid-template-columns: minmax(380px, 40%) minmax(0, 60%);
       }
-
       .hero-panel {
-        position: sticky;
-        top: 0;
-
-        height: 100vh;
-        height: 100svh;
-        min-height: 600px;
+        position: sticky; top: 0; height: 100vh; height: 100svh; min-height: 600px;
       }
-
-      .content-panel {
-        min-height: 100vh;
-        min-height: 100svh;
-      }
+      .content-panel { min-height: 100vh; min-height: 100svh; }
     }
-
-    /* ========================================
-       タブレット・スマートフォン
-    ======================================== */
 
     @media (max-width: 959px) {
-      .hero-panel {
-        min-height: auto;
-
-        padding-bottom: 36px;
-      }
-
-      .hero-visual {
-        min-height: 280px;
-        margin-top: 34px;
-        margin-bottom: 32px;
-      }
-
-      .hero-placeholder {
-        min-height: 280px;
-      }
-
-      .hero-footer {
-        display: none;
-      }
-
-      .content-panel {
-        border-radius: 28px 28px 0 0;
-      }
-
-      .mobile-header {
-        display: block;
-      }
+      .hero-panel { min-height: auto; padding-bottom: 32px; }
+      .hero-visual { min-height: 240px; margin: 24px 0; }
+      .hero-footer { display: none; }
     }
-
-    /* ========================================
-       スマートフォン
-    ======================================== */
 
     @media (max-width: 600px) {
-      .hero-panel {
-        padding:
-          max(22px, env(safe-area-inset-top))
-          17px
-          31px;
-      }
-
-      .brand {
-        gap: 12px;
-      }
-
-      .brand-logo {
-        width: 59px;
-        height: 59px;
-
-        border-radius: 18px;
-
-        font-size: 2.1rem;
-      }
-
-      .brand-name {
-        font-size: 1.55rem;
-      }
-
-      .hero-visual {
-        width: 100%;
-        min-height: 235px;
-
-        margin: 28px 0;
-
-        border-radius: 28px;
-      }
-
-      .hero-placeholder {
-        min-height: 235px;
-      }
-
-      .hero-placeholder-icon {
-        font-size: 5rem;
-      }
-
-      .hero-copy h1 {
-        font-size: clamp(2.25rem, 13vw, 3.5rem);
-      }
-
-      .content-panel {
-        padding:
-          22px
-          max(14px, env(safe-area-inset-right))
-          max(35px, env(safe-area-inset-bottom))
-          max(14px, env(safe-area-inset-left));
-      }
-
-      .profile-stack {
-        border-radius: 23px;
-      }
-
-      .section-card {
-        padding: 24px 18px;
-      }
-
-      .section-heading {
-        margin-bottom: 20px;
-      }
-
-      .heading-icon {
-        width: 42px;
-        height: 42px;
-
-        border-radius: 13px;
-
-        font-size: 1.25rem;
-      }
-
-      .profile-main {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-
-      .profile-avatar {
-        width: 100px;
-        height: 100px;
-
-        margin-inline: auto;
-      }
-
-      .profile-data {
-        grid-template-columns: 1fr;
-      }
-
-      .interest-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .environment-item,
-      .news-item {
-        grid-template-columns: 1fr;
-        gap: 5px;
-      }
-
-      .link-card {
-        padding: 16px;
-      }
-    }
-
-    /* ========================================
-       動きを減らす設定
-    ======================================== */
-
-    @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      *,
-      *::before,
-      *::after {
-        transition: none !important;
-        animation: none !important;
-      }
+      .hero-panel { padding: max(20px, env(safe-area-inset-top)) 16px 28px; }
+      .brand-logo { width: 54px; height: 54px; font-size: 2rem; border-radius: 16px; }
+      .brand-name { font-size: 1.45rem; }
+      .hero-copy h1 { font-size: 2.2rem; }
+      .content-panel { padding: 18px max(12px, env(safe-area-inset-right)) max(30px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left)); }
+      .profile-main { grid-template-columns: 1fr; text-align: center; }
+      .profile-avatar { margin-inline: auto; }
+      .profile-data, .interest-grid { grid-template-columns: 1fr; }
+      .environment-item, .news-item { grid-template-columns: 1fr; gap: 4px; }
     }
   </style>
 </head>
@@ -1133,498 +476,257 @@
 <body>
   <main class="site-layout">
 
-    <!-- 左側ビジュアル -->
     <aside class="hero-panel" aria-label="ホーム">
-
       <header class="hero-header">
         <div class="brand">
-          <div class="brand-logo" aria-hidden="true">
-            🐈‍⬛
-          </div>
-
+          <div class="brand-logo" aria-hidden="true">🐈‍⬛</div>
           <div>
-            <span class="brand-label">
-              Personal Website
-            </span>
-
-            <p class="brand-name">
-              Kuroneko Home
-            </p>
+            <span class="brand-label">Personal Website</span>
+            <p class="brand-name">Kuroneko Home</p>
           </div>
+        </div>
+
+        <div class="retro-counter-box">
+          <span>COUNTER:</span>
+          <span class="retro-counter-num" id="counterNumber">001234</span>
         </div>
       </header>
 
       <div>
         <div class="hero-visual">
-
-          <!--
-            hero.webpを使う場合は、次のimgを残してください。
-            JavaScriptが読み込み成功時に自動表示します。
-          -->
-          <img
-            class="hero-image"
-            id="hero-image"
-            src="hero.webp"
-            alt="Kuroneko    <div>
-              <span
-                class="hero-placeholder-icon"
-                aria-hidden="true"
-              >
-                🐈‍⬛
-              </span>
-
-              <p>
-                ここに好きな画像を設定できます
-                <br>
-                ファイル名：hero.webp
-              </p>
-            </div>
+          <img class="hero-image" id="hero-image" src="hero.webp" alt="Kuroneko Hero Image">
+          <div class="hero-placeholder" id="hero-placeholder">
+            <span class="hero-placeholder-icon" aria-hidden="true">🐈‍⬛</span>
+            <p>Welcome to Kuroneko Home<br><small>hero.webp 設定可能</small></p>
           </div>
         </div>
 
         <div class="hero-copy">
-          <h1>
-            Hello,
-            <br>
-            I'm Kuroneko.
-          </h1>
-
-          <p>
-            Web制作やプログラミングを勉強しています。
-            このサイトでは自己紹介や制作物をまとめています。
-          </p>
-
-          <div
-            class="hero-tags"
-            aria-label="興味のある分野"
-          >
+          <h1>Hello,<br>I'm Kuroneko.</h1>
+          <p>自分のペースでWeb制作やプログラミングを勉強しています。見やすく、軽く、使いやすいサイト作りを目指しています。</p>
+          <div class="hero-tags" aria-label="興味のある分野">
             <span class="hero-tag">Web</span>
             <span class="hero-tag">Programming</span>
             <span class="hero-tag">Games</span>
             <span class="hero-tag">Cats</span>
+            <span class="hero-tag">Linux</span>
           </div>
         </div>
       </div>
 
-      <p class="hero-footer">
-        Scroll to explore ↓
-      </p>
+      <p class="hero-footer">Scroll to explore ↓</p>
     </aside>
 
-    <!-- 右側コンテンツ -->
     <div class="content-panel">
       <div class="content-inner">
 
-        <div class="mobile-header">
-          🐾 Kuroneko Home
+        <div class="kao-banner">
+          🐾 <b>警告：Web空間は猫の癒ややしパワーに占領されようとしています</b><br>
+          <span class="kao-timer" id="liveCountdown">155d 15h 05m 06s</span>
         </div>
 
-        <nav
-          class="section-nav"
-          aria-label="ページ内メニュー"
-        >
-          #profileプロフィール</a>
-          <a href="#interests
-          <a href="#works         <a href="#nt環境</a>
-          <aews更新履歴</a>
+        <div class="qa-box">
+          <div class="qa-title">❓ 上の警告はなに？</div>
+          <div>猫の可愛さとプログラミングの面白さに魅了された開発者がお送りするユーモアバナーです。サイトが乗っ取られたわけではありませんので安心してください！</div>
+        </div>
+
+        <nav class="section-nav" aria-label="ページ内メニュー">
+          <a href="#profile">#プロフィール</a>
+          <a href="#interests">#好きなこと</a>
+          <a href="#works">#制作物</a>
+          <a href="#contacts">#連絡先・ゲームID</a>
+          <a href="#environment">#環境</a>
+          <a href="#news">#更新履歴</a>
         </nav>
 
         <div class="profile-stack">
 
-          <!-- プロフィール -->
-          <section
-            class="section-card"
-            id="profile"
-            aria-labelledby="profile-heading"
-          >
+          <section class="section-card" id="profile" aria-labelledby="profile-heading">
             <div class="section-heading">
-              <div
-                class="heading-icon"
-                aria-hidden="true"
-              >
-                👤
-              </div>
-
-              <h2 id="profile-heading">
-                プロフィール
-              </h2>
+              <div class="heading-icon" aria-hidden="true">👤</div>
+              <h2 id="profile-heading">プロフィール</h2>
             </div>
 
             <div class="profile-main">
               <div class="profile-avatar">
-
-                profile.webp
-
-                <span
-                  id="avatar-placeholder"
-                  aria-hidden="true"
-                >
-                  🐈‍⬛
-                </span>
+                <img class="avatar-image" id="avatar-image" src="profile.webp" alt="Kuroneko Avatar">
+                <span id="avatar-placeholder" aria-hidden="true">🐈‍⬛</span>
               </div>
 
               <div>
-                <h3 class="profile-name">
-                  Kuroneko
-                </h3>
-
-                <p class="profile-role">
-                  Student / Web Creator
-                </p>
-
-                <p class="profile-message">
-                  自分のペースでWeb制作やプログラミングを
-                  学んでいます。見やすく、軽く、使いやすい
-                  サイトを作ることが目標です。
-                </p>
+                <h3 class="profile-name">Kuroneko</h3>
+                <p class="profile-role">Student / Web Creator</p>
+                <p class="profile-message">自分のペースでWeb制作やプログラミングを学んでいます。見やすく、軽く、使いやすいサイトを作ることが目標です。</p>
               </div>
             </div>
 
             <dl class="profile-data">
-              <div class="profile-item">
-                <dt>Name</dt>
-                <dd>Kuroneko</dd>
-              </div>
-
-              <div class="profile-item">
-                <dt>Role</dt>
-                <dd>学生</dd>
-              </div>
-
-              <div class="profile-item">
-                <dt>Favorite</dt>
-                <dd>猫・ゲーム・Web制作</dd>
-              </div>
-
-              <div class="profile-item">
-                <dt>Learning</dt>
-                <dd>HTML / CSS / JavaScript</dd>
-              </div>
+              <div class="profile-item"><dt>Name</dt><dd>Kuroneko</dd></div>
+              <div class="profile-item"><dt>Role</dt><dd>学生</dd></div>
+              <div class="profile-item"><dt>Favorite</dt><dd>猫・ゲーム・Web制作</dd></div>
+              <div class="profile-item"><dt>Learning</dt><dd>HTML / CSS / JS</dd></div>
             </dl>
 
             <details>
-              <summary>
-                もっと見る
-              </summary>
-
+              <summary>・立ち絵・隠し設定などを見る</summary>
               <div class="details-content">
-                <p>
-                  GitHub Pagesを使って、作品や実験用の
-                  Webサイトを公開しています。現在は、
-                  スマートフォンやiPadでも見やすい
-                  レスポンシブデザインを勉強中です。
-                </p>
+                <p><b>趣味と好きなこと：</b><br>
+                PCいじり、新しいWEB技術のテスト、猫動画鑑賞。<br>
+                基本的に軽量でシンプルな環境が好きです（Linux/Debianにも興味津々！）。</p>
+                <br>
+                <p><b>アイコン・立ち絵について：</b><br>
+                黒猫モチーフのイラストを愛用しています。見かけたら仲良くしてくださいね！</p>
               </div>
             </details>
           </section>
 
-          <!-- 好きなこと -->
-          <section
-            class="section-card"
-            id="interests"
-            aria-labelledby="interests-heading"
-          >
+          <section class="section-card" id="interests" aria-labelledby="interests-heading">
             <div class="section-heading">
-              <div
-                class="heading-icon"
-                aria-hidden="true"
-              >
-                ✨
-              </div>
-
-              <h2 id="interests-heading">
-                好きなこと
-              </h2>
+              <div class="heading-icon" aria-hidden="true">✨</div>
+              <h2 id="interests-heading">好きなこと</h2>
             </div>
 
             <div class="interest-grid">
               <article class="interest-item">
-                <span
-                  class="interest-icon"
-                  aria-hidden="true"
-                >
-                  🐈
-                </span>
-
+                <span class="interest-icon" aria-hidden="true">🐈</span>
                 <h3>猫</h3>
-
-                <p>
-                  黒猫をテーマにしたデザインや、
-                  猫に関係するものが好きです。
-                </p>
+                <p>黒猫をテーマにしたデザインや、猫に関係するものが大好きです。</p>
               </article>
 
               <article class="interest-item">
-                <span
-                  class="interest-icon"
-                  aria-hidden="true"
-                >
-                  💻
-                </span>
-
+                <span class="interest-icon" aria-hidden="true">💻</span>
                 <h3>Web制作</h3>
-
-                <p>
-                  HTML・CSS・JavaScriptを使った
-                  サイト制作を練習しています。
-                </p>
+                <p>HTML・CSS・JavaScriptを使ったスッキリ動くサイト制作を練習中。</p>
               </article>
 
               <article class="interest-item">
-                <span
-                  class="interest-icon"
-                  aria-hidden="true"
-                >
-                  🎮
-                </span>
-
+                <span class="interest-icon" aria-hidden="true">🎮</span>
                 <h3>ゲーム</h3>
-
-                <p>
-                  ゲームを遊ぶことや、
-                  小さなゲームを作ることに興味があります。
-                </p>
+                <p>ゲームを遊ぶことや、Unity等で小さなゲームを作ることにも興味があります。</p>
               </article>
 
               <article class="interest-item">
-                <span
-                  class="interest-icon"
-                  aria-hidden="true"
-                >
-                  🛠️
-                </span>
-
+                <span class="interest-icon" aria-hidden="true">🛠️</span>
                 <h3>便利ツール</h3>
-
-                <p>
-                  日常で使えるWebツールや、
-                  面白い機能を考えるのが好きです。
-                </p>
+                <p>日常で使えるWebツールや、面白い仕掛けを考えるのが好きです。</p>
               </article>
             </div>
           </section>
 
-          <!-- 制作物 -->
-          <section
-            class="section-card"
-            id="works"
-            aria-labelledby="works-heading"
-          >
+          <section class="section-card" id="works" aria-labelledby="works-heading">
             <div class="section-heading">
-              <div
-                class="heading-icon"
-                aria-hidden="true"
-              >
-                🔗
-              </div>
-
-              <h2 id="works-heading">
-                制作物・リンク
-              </h2>
+              <div class="heading-icon" aria-hidden="true">🔗</div>
+              <h2 id="works-heading">制作物・リンク</h2>
             </div>
 
             <ul class="link-list">
               <li>
-                https://nekosan2sd.github.io/
+                <a href="https://nekosan2sd.github.io/" target="_blank" rel="noopener" class="link-card">
                   <span>
-                    <span class="link-title">
-                      メインサイト
-                    </span>
-
-                    <span class="link-description">
-                      最初に公開したGitHub Pagesサイトです。
-                    </span>
+                    <span class="link-title">TKD株式会社 公式サイト</span>
+                    <span class="link-description">最初に公開したGitHub Pagesサイトです。勢いと夢が詰まっています。</span>
                   </span>
-
-                  <span
-                    class="link-arrow"
-                    aria-hidden="true"
-                  >
-                    →
-                  </span>
+                  <span class="link-arrow" aria-hidden="true">→</span>
                 </a>
               </li>
 
               <li>
-                https://nekosan2sd.github.io/kuroneko/
+                <a href="https://nekosan2sd.github.io/kuroneko/" target="_blank" rel="noopener" class="link-card">
                   <span>
-                    <span class="link-title">
-                      Kuroneko Home
-                    </span>
-
-                    <span class="link-description">
-                      現在表示している自己紹介サイトです。
-                    </span>
+                    <span class="link-title">Kuroneko Home</span>
+                    <span class="link-description">現在表示している自己紹介＆ポートフォリオサイトです。</span>
                   </span>
-
-                  <span
-                    class="link-arrow"
-                    aria-hidden="true"
-                  >
-                    →
-                  </span>
+                  <span class="link-arrow" aria-hidden="true">→</span>
                 </a>
               </li>
 
               <li>
-                #
+                <a href="#" data-coming-soon="true" class="link-card">
                   <span>
-                    <span class="link-title">
-                      新しい作品
-                    </span>
-
-                    <span class="link-description">
-                      次に公開する作品を準備しています。
-                    </span>
+                    <span class="link-title">新しい作品（準備中）</span>
+                    <span class="link-description">次に公開するWebアプリやゲームを絶賛開発中！</span>
                   </span>
-
-                  <span
-                    class="link-arrow"
-                    aria-hidden="true"
-                  >
-                    …
-                  </span>
+                  <span class="link-arrow" aria-hidden="true">…</span>
                 </a>
               </li>
             </ul>
           </section>
 
-          <!-- 使用環境 -->
-          <section
-            class="section-card"
-            id="environment"
-            aria-labelledby="environment-heading"
-          >
+          <section class="section-card" id="contacts" aria-labelledby="contacts-heading">
             <div class="section-heading">
-              <div
-                class="heading-icon"
-                aria-hidden="true"
-              >
-                🖥️
-              </div>
-
-              <h2 id="environment-heading">
-                制作環境
-              </h2>
+              <div class="heading-icon" aria-hidden="true">📬</div>
+              <h2 id="contacts-heading">連絡先 & ゲームID</h2>
             </div>
 
-            <dl class="environment-list">
-              <div class="environment-item">
-                <dt>公開先</dt>
-                <dd>GitHub Pages</dd>
-              </div>
-
-              <div class="environment-item">
-                <dt>使用技術</dt>
-                <dd>HTML / CSS / JavaScript</dd>
-              </div>
-
-              <div class="environment-item">
-                <dt>方針</dt>
-                <dd>
-                  軽量・高速・スマートフォン対応
-                </dd>
-              </div>
-
-              <div class="environment-item">
-                <dt>現在の目標</dt>
-                <dd>
-                  読みやすく、崩れにくいサイトを作ること
-                </dd>
-              </div>
-            </dl>
+            <ul class="contact-list">
+              <li><span>GitHub</span><a href="https://github.com/Nekosan2sd" target="_blank" rel="noopener">@Nekosan2sd</a></li>
+              <li><span>X (Twitter)</span><a href="#" data-coming-soon="true">@Kuroneko_Dev</a></li>
+              <li><span>Discord</span><span>kuroneko_dev</span></li>
+            </ul>
 
             <details>
-              <summary>
-                制作方針を詳しく見る
-              </summary>
-
+              <summary>・ゲームアカウント / UID などを見る</summary>
               <div class="details-content">
-                <p>
-                  外部ライブラリをできるだけ使わず、
-                  HTML・CSS・JavaScriptを中心に制作しています。
-                  画像はWebP形式を使い、読み込み速度にも
-                  気を配る予定です。
-                </p>
+                <ul class="contact-list" style="margin-top: 10px;">
+                  <li><span>Minecraft ID</span><span>Kuroneko_Craft</span></li>
+                  <li><span>原神 (UID)</span><span>800000000</span></li>
+                  <li><span>崩壊:スターレイル (UID)</span><span>800000000</span></li>
+                  <li><span>Steam ID</span><span>Kuroneko</span></li>
+                </ul>
               </div>
             </details>
           </section>
 
-          <!-- 更新履歴 -->
-          <section
-            class="section-card"
-            id="news"
-            aria-labelledby="news-heading"
-          >
+          <section class="section-card" id="environment" aria-labelledby="environment-heading">
             <div class="section-heading">
-              <div
-                class="heading-icon"
-                aria-hidden="true"
-              >
-                📢
-              </div>
+              <div class="heading-icon" aria-hidden="true">🖥️</div>
+              <h2 id="environment-heading">制作環境</h2>
+            </div>
 
-              <h2 id="news-heading">
-                更新履歴
-              </h2>
+            <dl class="environment-list">
+              <div class="environment-item"><dt>公開先</dt><dd>GitHub Pages</dd></div>
+              <div class="environment-item"><dt>使用技術</dt><dd>HTML / CSS / JavaScript</dd></div>
+              <div class="environment-item"><dt>方針</dt><dd>軽量・高速・スマートフォン完全対応</dd></div>
+              <div class="environment-item"><dt>現在の目標</dt><dd>読みやすく、崩れにくいモダンサイトを作ること</dd></div>
+            </dl>
+
+            <details>
+              <summary>・制作方針を詳しく見る</summary>
+              <div class="details-content">
+                <p>外部ライブラリを極力抑え、HTML・CSS・JavaScriptを中心に高速で動作する設計を目指しています。WebP画像を活用し、スマホでの読み込みストレスを削減しています。</p>
+              </div>
+            </details>
+          </section>
+
+          <section class="section-card" id="news" aria-labelledby="news-heading">
+            <div class="section-heading">
+              <div class="heading-icon" aria-hidden="true">📢</div>
+              <h2 id="news-heading">更新履歴</h2>
             </div>
 
             <ul class="news-list">
               <li class="news-item">
-                <time datetime="2026-07-28">
-                  2026.07.28
-                </time>
-
-                <p>
-                  自己紹介サイトを新しく作成しました。
-                </p>
+                <time datetime="2026-07-29">2026.07.29</time>
+                <p>あどたん風2カラムデザイン＆ギーク要素を導入し大改装！</p>
               </li>
-
               <li class="news-item">
-                <time datetime="2026-07-28">
-                  2026.07.28
-                </time>
-
-                <p>
-                  iPad・スマートフォン対応を追加しました。
-                </p>
+                <time datetime="2026-07-28">2026.07.28</time>
+                <p>iPad・スマートフォン対応を強化しました。</p>
               </li>
-
               <li class="news-item">
-                <time datetime="2026-07-28">
-                  2026.07.28
-                </time>
-
-                <p>
-                  Kuronekoリポジトリを公開しました。
-                </p>
+                <time datetime="2026-07-28">2026.07.28</time>
+                <p>Kuroneko Home リポジトリを公開しました。</p>
               </li>
             </ul>
-
-            <details>
-              <summary>
-                その他
-              </summary>
-
-              <div class="details-content">
-                <p id="today-message">
-                  今日も少しずつ制作中です。
-                </p>
-              </div>
-            </details>
           </section>
 
         </div>
 
         <footer class="page-footer">
-          <p id="copyright">
-            © Kuroneko Home
-          </p>
-
-          <p>
-            Built with HTML, CSS and JavaScript.
-          </p>
+          <p id="copyright">© Kuroneko Home</p>
+          <p>Built with HTML, CSS and JavaScript. Inspired by ギークスピリッツ ✨</p>
         </footer>
+
       </div>
     </div>
   </main>
@@ -1632,78 +734,69 @@
   <script>
     "use strict";
 
-    /*
-      メイン画像が存在する場合だけ表示します。
-      画像がない場合は黒猫アイコンを表示します。
-    */
+    // 1. 画像フォールバック処理 (hero.webp & profile.webp)
+    const heroImage = document.getElementById("hero-image");
+    const heroPlaceholder = document.getElementById("hero-placeholder");
+    if (heroImage) {
+      heroImage.addEventListener("load", () => {
+        heroImage.style.display = "block";
+        heroPlaceholder.style.display = "none";
+      });
+      heroImage.addEventListener("error", () => {
+        heroImage.style.display = "none";
+        heroPlaceholder.style.display = "block";
+      });
+    }
 
-    const heroImage =
-      document.getElementById("hero-image");
+    const avatarImage = document.getElementById("avatar-image");
+    const avatarPlaceholder = document.getElementById("avatar-placeholder");
+    if (avatarImage) {
+      avatarImage.addEventListener("load", () => {
+        avatarImage.style.display = "block";
+        avatarPlaceholder.style.display = "none";
+      });
+      avatarImage.addEventListener("error", () => {
+        avatarImage.style.display = "none";
+        avatarPlaceholder.style.display = "inline";
+      });
+    }
 
-    const heroPlaceholder =
-      document.getElementById("hero-placeholder");
-
-    heroImage.addEventListener("load", () => {
-      heroImage.style.display = "block";
-      heroPlaceholder.style.display = "none";
-    });
-
-    heroImage.addEventListener("error", () => {
-      heroImage.style.display = "none";
-      heroPlaceholder.style.display = "grid";
-    });
-
-    /*
-      プロフィール画像も、存在する場合だけ表示します。
-    */
-
-    const avatarImage =
-      document.getElementById("avatar-image");
-
-    const avatarPlaceholder =
-      document.getElementById("avatar-placeholder");
-
-    avatarImage.addEventListener("load", () => {
-      avatarImage.style.display = "block";
-      avatarPlaceholder.style.display = "none";
-    });
-
-    avatarImage.addEventListener("error", () => {
-      avatarImage.style.display = "none";
-      avatarPlaceholder.style.display = "inline";
-    });
-
-    /*
-      準備中のリンクではページ上部へ移動しないようにします。
-    */
-
-    const comingSoonLinks =
-      document.querySelectorAll(
-        "[data-coming-soon='true']"
-      );
-
+    // 2. 準備中リンクの警告ダイアログ
+    const comingSoonLinks = document.querySelectorAll("[data-coming-soon='true']");
     comingSoonLinks.forEach((link) => {
       link.addEventListener("click", (event) => {
         event.preventDefault();
-
-        window.alert(
-          "このページは現在準備中です。"
-        );
+        window.alert("このページ/アカウントは現在準備中です 🐾");
       });
     });
 
-    /*
-      年を自動更新します。
-    */
+    // 3. 自動著作権年更新
+    const currentYear = new Date().getFullYear();
+    const copyright = document.getElementById("copyright");
+    if (copyright) {
+      copyright.textContent = `© ${currentYear} Kuroneko Home`;
+    }
 
-    const currentYear =
-      new Date().getFullYear();
+    // 4. あどたん風：ライブカウントダウンタイマー
+    function updateCountdown() {
+      const targetDate = new Date("2026-12-31T23:59:59").getTime();
+      const now = new Date().getTime();
+      const diff = targetDate - now;
 
-    const copyright =
-      document.getElementById("copyright");
+      if (diff > 0) {
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        document.getElementById("liveCountdown").textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+      }
+    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
 
-    copyright.textContent =
-      `© ${currentYear} Kuroneko Home`;
+    // 5. アクセスカウンター風ランダム加算（リフレッシュ感演出）
+    const baseCounter = 1234 + Math.floor(Math.random() * 50);
+    document.getElementById("counterNumber").textContent = String(baseCounter).padStart(6, '0');
   </script>
 </body>
 </html>
