@@ -3,130 +3,177 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Kuroneko Network</title>
 
 <style>
+
+:root{
+--bg:#0f172a;
+--card:#1e293b;
+--card-hover:#334155;
+--text:#ffffff;
+--sub:#cbd5e1;
+--accent:#60a5fa;
+}
+
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:-apple-system,BlinkMacSystemFont,sans-serif;
 }
 
 body{
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+background:
+linear-gradient(
+135deg,
+#020617,
+#0f172a,
+#111827
+);
+color:var(--text);
 min-height:100vh;
-background:linear-gradient(135deg,#0f172a,#1e293b,#111827);
-color:white;
-display:flex;
-justify-content:center;
-padding:30px;
 }
 
 .container{
-width:100%;
-max-width:1000px;
+max-width:1200px;
+margin:auto;
+padding:25px;
 }
 
-header{
+.hero{
 text-align:center;
-margin-bottom:30px;
+padding:60px 20px;
 }
 
 .logo{
-font-size:4rem;
+font-size:70px;
+margin-bottom:15px;
+}
+
+.hero h1{
+font-size:clamp(2.5rem,5vw,5rem);
+font-weight:800;
 margin-bottom:10px;
 }
 
-h1{
-font-size:3rem;
-}
-
-.subtitle{
-opacity:.8;
-margin-top:10px;
+.hero p{
+color:var(--sub);
+font-size:1.1rem;
 }
 
 .search{
-margin:30px 0;
+margin:30px auto;
+max-width:700px;
 }
 
 .search input{
 width:100%;
-padding:15px;
+padding:18px;
+font-size:1rem;
 border:none;
-border-radius:15px;
-background:rgba(255,255,255,.1);
+border-radius:18px;
+background:rgba(255,255,255,.08);
 backdrop-filter:blur(10px);
 color:white;
-font-size:1rem;
 outline:none;
+}
+
+.search input::placeholder{
+color:#94a3b8;
 }
 
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+grid-template-columns:
+repeat(auto-fit,minmax(280px,1fr));
 gap:20px;
+margin-top:40px;
 }
 
 .card{
+display:block;
 text-decoration:none;
 color:white;
-background:rgba(255,255,255,.08);
-border:1px solid rgba(255,255,255,.1);
-backdrop-filter:blur(15px);
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+border-radius:24px;
 padding:25px;
-border-radius:20px;
-transition:.3s;
+transition:.25s;
 }
 
 .card:hover{
-transform:translateY(-8px);
-background:rgba(255,255,255,.15);
-box-shadow:0 15px 40px rgba(0,0,0,.3);
+transform:translateY(-6px);
+background:var(--card-hover);
 }
 
 .icon{
-font-size:2.5rem;
-margin-bottom:10px;
+font-size:2.2rem;
+margin-bottom:15px;
 }
 
 .card h2{
 margin-bottom:10px;
+font-size:1.5rem;
 }
 
 .card p{
-opacity:.8;
-line-height:1.5;
+color:var(--sub);
+line-height:1.6;
 }
 
 footer{
+margin-top:70px;
+padding:25px;
 text-align:center;
-margin-top:40px;
-opacity:.6;
+color:#94a3b8;
 }
+
+@media(max-width:768px){
+
+.hero{
+padding:40px 10px;
+}
+
+.logo{
+font-size:55px;
+}
+
+.card{
+padding:20px;
+}
+
+}
+
 </style>
 </head>
 <body>
 
 <div class="container">
 
-<header>
+<section class="hero">
+
 <div class="logo">🐈‍⬛</div>
+
 <h1>Kuroneko Network</h1>
-<p class="subtitle">サイト集ポータル</p>
-</header>
+
+<p>サイト集ポータル</p>
+
+</section>
 
 <div class="search">
 <input
-type="text"
 id="search"
+type="text"
 placeholder="サイトを検索..."
 >
 </div>
 
-<div class="grid" id="sites">
+<div class="grid" id="grid">
 
-<a class="card" href🎮</div>
+<a class="card" href="#">
+v>
 <h2>Games</h2>
 <p>ゲームや実験作品</p>
 </a>
@@ -138,13 +185,12 @@ placeholder="サイトを検索..."
 
 <a classlass="icon">📚</div>
 <h2>Study</h2>
-<p>学習メモや資料</p>
+<p>学習サイトやメモ</p>
 </a>
 
-#
-<div class="icon">📝</div>
+<a classlass="icon">📝</div>
 <h2>Blog</h2>
-<p>開発日記や雑記</p>
+<p>開発記録や記事</p>
 </a>
 
 #
@@ -153,8 +199,8 @@ placeholder="サイトを検索..."
 <p>コミュニティ関連</p>
 </a>
 
-#
-<div class="icon">👤</div>
+<a class="card" href="#">
+v>
 <h2>Profile</h2>
 <p>自己紹介ページ</p>
 </a>
@@ -171,15 +217,22 @@ placeholder="サイトを検索..."
 const search = document.getElementById("search");
 
 search.addEventListener("input", () => {
-const keyword = search.value.toLowerCase();
 
-document.querySelectorAll(".card").forEach(card => {
-const text = card.innerText.toLowerCase();
+const keyword =
+search.value.toLowerCase();
+
+document
+.querySelectorAll(".card")
+.forEach(card => {
+
+const text =
+card.innerText.toLowerCase();
 
 card.style.display =
 text.includes(keyword)
 ? "block"
 : "none";
+
 });
 });
 </script>
