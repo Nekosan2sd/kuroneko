@@ -62,9 +62,7 @@
       }
     }
 
-    /* ========================================
-       リセット & 基本スタイル
-    ======================================== */
+    /* リセット & 基本スタイル */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     html {
@@ -100,9 +98,7 @@
       min-height: 100svh;
     }
 
-    /* ========================================
-       左側ヒーローパネル
-    ======================================== */
+    /* 左側ヒーローパネル */
     .hero-panel {
       position: relative;
       display: flex;
@@ -231,9 +227,7 @@
 
     .hero-footer { margin-top: 24px; opacity: 0.7; font-size: 0.78rem; }
 
-    /* ========================================
-       右側メインコンテンツ
-    ======================================== */
+    /* 右側メインコンテンツ */
     .content-panel {
       padding: max(26px, env(safe-area-inset-top)) max(22px, env(safe-area-inset-right)) max(45px, env(safe-area-inset-bottom)) max(22px, env(safe-area-inset-left));
       background: var(--panel-background);
@@ -244,7 +238,7 @@
       margin-inline: auto;
     }
 
-    /* 年越しカウントダウンカード（水色・スッキリデザイン） */
+    /* 年越しカウントダウンカード */
     .countdown-card {
       background: var(--accent-soft);
       border: 1px solid var(--border);
@@ -422,6 +416,26 @@
     .news-item time { color: var(--accent); font-size: 0.82rem; font-weight: 800; }
     .news-item p { color: var(--subtext); font-size: 0.88rem; }
 
+    /* NEWS管理者ログインエリア */
+    .admin-news-box {
+      margin-top: 16px;
+      padding: 14px;
+      background: var(--accent-soft);
+      border-radius: 12px;
+      border: 1px dashed var(--accent);
+    }
+    .admin-btn {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 0.82rem;
+    }
+    .admin-btn:hover { background: var(--accent-dark); }
+
     /* フッター */
     .page-footer {
       margin-top: 22px; padding: 24px 20px; border: 1px solid var(--border);
@@ -429,9 +443,7 @@
       color: var(--muted); box-shadow: var(--shadow); font-size: 0.8rem; text-align: center; line-height: 1.7;
     }
 
-    /* =========================================
-       レスポンシブ (PC・タブレット・スマホ)
-    ========================================= */
+    /* レスポンシブ */
     @media (min-width: 960px) {
       .site-layout {
         display: grid;
@@ -493,12 +505,12 @@
 
         <div class="hero-copy">
           <h1>Hello,<br>I'm nekosan2sd.</h1>
-          <p>猫が大好き！自分のペースでWeb制作やプログラミングを学んでいます。</p>
+          <p>猫が大好き！Chromebookを相棒に、自分のペースでWeb制作や開発を楽しんでいます。</p>
           <div class="hero-tags" aria-label="興味のある分野">
             <span class="hero-tag">Cats</span>
+            <span class="hero-tag">Chromebook</span>
             <span class="hero-tag">Web</span>
             <span class="hero-tag">Programming</span>
-            <span class="hero-tag">Games</span>
           </div>
         </div>
       </div>
@@ -543,22 +555,25 @@
               <div>
                 <h3 class="profile-name">nekosan2sd</h3>
                 <p class="profile-role">NEKO / Web Creator</p>
-                <p class="profile-message">とにかく猫が好き！見やすく、使いやすいWebサイトを作るために勉強中です。</p>
+                <p class="profile-message">兵庫県在住。とにかく猫が好き！Chromebookを愛用しながら、見やすく使いやすいWebサイト制作を研究中。</p>
               </div>
             </div>
 
             <dl class="profile-data">
               <div class="profile-item"><dt>Name</dt><dd>nekosan2sd</dd></div>
-              <div class="profile-item"><dt>Brand</dt><dd>NEKO</dd></div>
-              <div class="profile-item"><dt>Love</dt><dd>猫 🐾</dd></div>
-              <div class="profile-item"><dt>Learning</dt><dd>HTML / CSS / JS</dd></div>
+              <div class="profile-item"><dt>Birthday</dt><dd>9月2日</dd></div>
+              <div class="profile-item"><dt>Blood Type</dt><dd>A型</dd></div>
+              <div class="profile-item"><dt>Location</dt><dd>兵庫県</dd></div>
             </dl>
 
             <details>
-              <summary>・詳細プロフィールを見る</summary>
+              <summary>・詳細プロフィール＆推しについて見る</summary>
               <div class="details-content">
-                <p><b>猫への愛：</b><br>
-                あらゆる猫にリスペクトを払っています。Web開発の合間に見る猫の動画と画像が最高の癒やしです。</p>
+                <p><b>推し猫・モチーフ：</b><br>
+                三毛猫（みけねこ）が大好きです！もちろんすべての猫をリスペクトしています。🐾</p>
+                <br>
+                <p><b>開発スタイル：</b><br>
+                Chromebookの軽量な環境を生かして、シンプルでサクサク動くHTML/CSS/JavaScriptの開発を目指しています。</p>
               </div>
             </details>
           </section>
@@ -571,27 +586,27 @@
 
             <div class="interest-grid">
               <article class="interest-item">
-                <span class="interest-icon" aria-hidden="true">🐱</span>
-                <h3>猫（大好き）</h3>
-                <p>猫に関するデザインやコンテンツが一番の好物です。</p>
+                <span class="interest-icon" aria-hidden="true">🐈</span>
+                <h3>猫（三毛猫推し）</h3>
+                <p>猫全般が大好きですが、特に三毛猫の柄や性格に惹かれます。</p>
               </article>
 
               <article class="interest-item">
                 <span class="interest-icon" aria-hidden="true">💻</span>
                 <h3>Web制作</h3>
-                <p>自分のアイデアをコードで形にする作業を楽しんでいます。</p>
+                <p>自分の手で思い通りのサイトを作る感覚が好きです。</p>
               </article>
 
               <article class="interest-item">
                 <span class="interest-icon" aria-hidden="true">🎮</span>
                 <h3>ゲーム</h3>
-                <p>プレイすることも、自分でちょっとしたゲームを作ることも好きです。</p>
+                <p>ゲームを遊ぶことや、自作のゲーム開発にもチャレンジ中！</p>
               </article>
 
               <article class="interest-item">
                 <span class="interest-icon" aria-hidden="true">🛠️</span>
-                <h3>開発・カスタマイズ</h3>
-                <p>あどたん風サイトのように、個性的でカッコいいサイトを作るのが趣味です。</p>
+                <h3>Chromebook活用</h3>
+                <p>ChromebookでどこまでWeb制作やアプリ開発ができるか試すのが趣味です。</p>
               </article>
             </div>
           </section>
@@ -628,25 +643,33 @@
           <section class="section-card" id="contacts" aria-labelledby="contacts-heading">
             <div class="section-heading">
               <div class="heading-icon" aria-hidden="true">📬</div>
-              <h2 id="contacts-heading">連絡先</h2>
+              <h2 id="contacts-heading">連絡先 & SNS</h2>
             </div>
 
             <ul class="contact-list">
               <li><span>GitHub</span><a href="https://github.com/Nekosan2sd" target="_blank" rel="noopener">@Nekosan2sd</a></li>
               <li><span>Website</span><a href="https://nekosan2sd.github.io/" target="_blank" rel="noopener">nekosan2sd.github.io</a></li>
             </ul>
+
+            <details>
+              <summary>・その他のアカウント情報（準備中）</summary>
+              <div class="details-content">
+                <p>SNSアカウントなどは準備が整い次第追加します！</p>
+              </div>
+            </details>
           </section>
 
           <section class="section-card" id="environment" aria-labelledby="environment-heading">
             <div class="section-heading">
               <div class="heading-icon" aria-hidden="true">🖥️</div>
-              <h2 id="environment-heading">制作環境</h2>
+              <h2 id="environment-heading">開発・愛用環境</h2>
             </div>
 
             <dl class="environment-list">
-              <div class="environment-item"><dt>公開先</dt><dd>GitHub Pages</dd></div>
-              <div class="environment-item"><dt>使用技術</dt><dd>HTML / CSS / JavaScript</dd></div>
-              <div class="environment-item"><dt>方針</dt><dd>軽量・高速・スマートフォン完全対応</dd></div>
+              <div class="environment-item"><dt>愛用機</dt><dd>Chromebook</dd></div>
+              <div class="environment-item"><dt>公開ホスト</dt><dd>GitHub Pages</dd></div>
+              <div class="environment-item"><dt>使用言語</dt><dd>HTML5 / CSS3 / JavaScript</dd></div>
+              <div class="environment-item"><dt>自宅サーバー</dt><dd>なし（クラウド＆ローカル軽量開発）</dd></div>
             </dl>
           </section>
 
@@ -656,12 +679,16 @@
               <h2 id="news-heading">更新履歴</h2>
             </div>
 
-            <ul class="news-list">
+            <ul class="news-list" id="newsList">
               <li class="news-item">
                 <time datetime="2026-07-29">2026.07.29</time>
-                <p>nekosan2sd (NEKO) 仕様でデザインをリニューアル！</p>
+                <p>nekosan2sd (NEKO) あどたん風カスタムサイトをオープン！</p>
               </li>
             </ul>
+
+            <div class="admin-news-box">
+              <button class="admin-btn" onclick="addAdminNews()">🔒［管理者用］NEWSを追加</button>
+            </div>
           </section>
 
         </div>
@@ -678,7 +705,7 @@
   <script>
     "use strict";
 
-    // 1. 画像フォールバック処理 (hero.webp & profile.webp)
+    // 1. 画像フォールバック処理
     const heroImage = document.getElementById("hero-image");
     const heroPlaceholder = document.getElementById("hero-placeholder");
     if (heroImage) {
@@ -741,6 +768,50 @@
     // 4. アクセスカウンター風ランダム数値
     const baseCounter = 1234 + Math.floor(Math.random() * 50);
     document.getElementById("counterNumber").textContent = String(baseCounter).padStart(6, '0');
+
+    // 5. 管理者NEWS追加機能（パスワード認証）
+    const ADMIN_PASS = "nekosan2sdkuroneko";
+
+    function loadSavedNews() {
+      const saved = localStorage.getItem("custom_news_list");
+      if (saved) {
+        const items = JSON.parse(saved);
+        const newsList = document.getElementById("newsList");
+        items.forEach(item => {
+          const li = document.createElement("li");
+          li.className = "news-item";
+          li.innerHTML = `<time datetime="${item.date}">${item.date}</time><p>${item.text}</p>`;
+          newsList.insertBefore(li, newsList.firstChild);
+        });
+      }
+    }
+
+    function addAdminNews() {
+      const pass = prompt("管理者パスワードを入力してください:");
+      if (pass === ADMIN_PASS) {
+        const today = new Date().toISOString().split('T')[0].replace(/-/g, '.');
+        const newsText = prompt("追加するNEWS本文を入力してください:", "新機能を追加しました！");
+        if (newsText) {
+          const newsList = document.getElementById("newsList");
+          const li = document.createElement("li");
+          li.className = "news-item";
+          li.innerHTML = `<time datetime="${today}">${today}</time><p>${newsText}</p>`;
+          newsList.insertBefore(li, newsList.firstChild);
+
+          // 保存
+          const saved = JSON.parse(localStorage.getItem("custom_news_list") || "[]");
+          saved.push({ date: today, text: newsText });
+          localStorage.setItem("custom_news_list", JSON.stringify(saved));
+
+          alert("NEWSを追加しました！✨");
+        }
+      } else if (pass !== null) {
+        alert("パスワードが違います！");
+      }
+    }
+
+    // 初期読み込み
+    window.addEventListener("DOMContentLoaded", loadSavedNews);
   </script>
 </body>
 </html>
