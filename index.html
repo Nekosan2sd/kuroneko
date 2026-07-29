@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="description" content="Kuronekoの自己紹介と制作物をまとめたホームページです。">
+  <meta name="description" content="nekosan2sd (NEKO) の公式ホームページです。猫が好き！">
   <meta name="theme-color" content="#168ed2">
 
-  <title>Kuroneko Home</title>
+  <title>nekosan2sd Home</title>
 
   <style>
     /* ========================================
-       基本カラー & 変数定義
+       基本カラー & 変数定義（あどたん水色風）
     ======================================== */
     :root {
       color-scheme: light dark;
@@ -94,7 +94,6 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    /* 全体レイアウト */
     .site-layout {
       width: 100%;
       min-height: 100vh;
@@ -102,7 +101,7 @@
     }
 
     /* ========================================
-       左側ヒーローパネル（あどたん風2カラム）
+       左側ヒーローパネル
     ======================================== */
     .hero-panel {
       position: relative;
@@ -160,7 +159,7 @@
       letter-spacing: -0.03em;
     }
 
-    /* アクセスカウンター風バッジ（あどたん再現） */
+    /* アクセスカウンター */
     .retro-counter-box {
       margin-top: 14px;
       display: inline-flex;
@@ -245,48 +244,39 @@
       margin-inline: auto;
     }
 
-    /* ⚠️ あどたん名物：警告バナー風コンポーネント */
-    .kao-banner {
-      background: linear-gradient(135deg, #ff4b4b, #d32f2f);
-      color: #ffffff;
-      padding: 16px 20px;
-      border-radius: 18px;
-      margin-bottom: 20px;
-      box-shadow: 0 8px 24px rgba(211, 47, 47, 0.3);
-      border: 1px solid rgba(255,255,255,0.3);
-    }
-    .kao-banner a {
-      color: #ffffff;
-      font-weight: 900;
-      font-size: 1.05rem;
-      text-decoration: underline;
-    }
-    .kao-timer {
-      display: inline-block;
-      margin-top: 6px;
-      font-family: monospace;
-      font-weight: bold;
-      background: rgba(0, 0, 0, 0.25);
-      padding: 3px 10px;
-      border-radius: 6px;
-      font-size: 0.9rem;
-    }
-
-    /* Q&A 枠 */
-    .qa-box {
+    /* 年越しカウントダウンカード（水色・スッキリデザイン） */
+    .countdown-card {
       background: var(--accent-soft);
       border: 1px solid var(--border);
+      padding: 16px 20px;
       border-radius: 18px;
-      padding: 18px;
-      margin-bottom: 24px;
-      font-size: 0.88rem;
-      line-height: 1.7;
+      margin-bottom: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
     }
-    .qa-title {
+
+    .countdown-title {
       font-weight: bold;
       color: var(--accent-dark);
-      font-size: 0.98rem;
-      margin-bottom: 6px;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .countdown-timer {
+      font-family: monospace;
+      font-weight: bold;
+      background: var(--card-background);
+      color: var(--accent-dark);
+      border: 1px solid var(--border);
+      padding: 6px 14px;
+      border-radius: 10px;
+      font-size: 1.05rem;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
     }
 
     /* ナビゲーション */
@@ -399,7 +389,7 @@
       color: var(--accent); font-weight: 900; display: grid; place-items: center;
     }
 
-    /* 連絡先 & ゲームID（あどたんスタイル） */
+    /* 連絡先 */
     .contact-list { list-style: none; display: grid; gap: 10px; font-size: 0.92rem; }
     .contact-list li { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; border: 1px solid var(--border); border-radius: 12px; background: var(--accent-soft); }
     .contact-list a { font-weight: bold; }
@@ -479,10 +469,10 @@
     <aside class="hero-panel" aria-label="ホーム">
       <header class="hero-header">
         <div class="brand">
-          <div class="brand-logo" aria-hidden="true">🐈‍⬛</div>
+          <div class="brand-logo" aria-hidden="true">🐱</div>
           <div>
-            <span class="brand-label">Personal Website</span>
-            <p class="brand-name">Kuroneko Home</p>
+            <span class="brand-label">NEKO</span>
+            <p class="brand-name">nekosan2sd</p>
           </div>
         </div>
 
@@ -494,22 +484,21 @@
 
       <div>
         <div class="hero-visual">
-          <img class="hero-image" id="hero-image" src="hero.webp" alt="Kuroneko Hero Image">
+          <img class="hero-image" id="hero-image" src="hero.webp" alt="nekosan2sd Hero Image">
           <div class="hero-placeholder" id="hero-placeholder">
-            <span class="hero-placeholder-icon" aria-hidden="true">🐈‍⬛</span>
-            <p>Welcome to Kuroneko Home<br><small>hero.webp 設定可能</small></p>
+            <span class="hero-placeholder-icon" aria-hidden="true">🐱</span>
+            <p>Welcome to nekosan2sd Home<br><small>hero.webp 設定可能</small></p>
           </div>
         </div>
 
         <div class="hero-copy">
-          <h1>Hello,<br>I'm Kuroneko.</h1>
-          <p>自分のペースでWeb制作やプログラミングを勉強しています。見やすく、軽く、使いやすいサイト作りを目指しています。</p>
+          <h1>Hello,<br>I'm nekosan2sd.</h1>
+          <p>猫が大好き！自分のペースでWeb制作やプログラミングを学んでいます。</p>
           <div class="hero-tags" aria-label="興味のある分野">
+            <span class="hero-tag">Cats</span>
             <span class="hero-tag">Web</span>
             <span class="hero-tag">Programming</span>
             <span class="hero-tag">Games</span>
-            <span class="hero-tag">Cats</span>
-            <span class="hero-tag">Linux</span>
           </div>
         </div>
       </div>
@@ -520,21 +509,19 @@
     <div class="content-panel">
       <div class="content-inner">
 
-        <div class="kao-banner">
-          🐾 <b>警告：Web空間は猫の癒ややしパワーに占領されようとしています</b><br>
-          <span class="kao-timer" id="liveCountdown">155d 15h 05m 06s</span>
-        </div>
-
-        <div class="qa-box">
-          <div class="qa-title">❓ 上の警告はなに？</div>
-          <div>猫の可愛さとプログラミングの面白さに魅了された開発者がお送りするユーモアバナーです。サイトが乗っ取られたわけではありませんので安心してください！</div>
+        <div class="countdown-card">
+          <div class="countdown-title">
+            <span>🎆</span>
+            <span>NEW YEAR COUNTDOWN</span>
+          </div>
+          <div class="countdown-timer" id="yearCountdown">00d 00h 00m 00s</div>
         </div>
 
         <nav class="section-nav" aria-label="ページ内メニュー">
           <a href="#profile">#プロフィール</a>
           <a href="#interests">#好きなこと</a>
           <a href="#works">#制作物</a>
-          <a href="#contacts">#連絡先・ゲームID</a>
+          <a href="#contacts">#連絡先</a>
           <a href="#environment">#環境</a>
           <a href="#news">#更新履歴</a>
         </nav>
@@ -549,33 +536,29 @@
 
             <div class="profile-main">
               <div class="profile-avatar">
-                <img class="avatar-image" id="avatar-image" src="profile.webp" alt="Kuroneko Avatar">
-                <span id="avatar-placeholder" aria-hidden="true">🐈‍⬛</span>
+                <img class="avatar-image" id="avatar-image" src="profile.webp" alt="nekosan2sd Avatar">
+                <span id="avatar-placeholder" aria-hidden="true">🐱</span>
               </div>
 
               <div>
-                <h3 class="profile-name">Kuroneko</h3>
-                <p class="profile-role">Student / Web Creator</p>
-                <p class="profile-message">自分のペースでWeb制作やプログラミングを学んでいます。見やすく、軽く、使いやすいサイトを作ることが目標です。</p>
+                <h3 class="profile-name">nekosan2sd</h3>
+                <p class="profile-role">NEKO / Web Creator</p>
+                <p class="profile-message">とにかく猫が好き！見やすく、使いやすいWebサイトを作るために勉強中です。</p>
               </div>
             </div>
 
             <dl class="profile-data">
-              <div class="profile-item"><dt>Name</dt><dd>Kuroneko</dd></div>
-              <div class="profile-item"><dt>Role</dt><dd>学生</dd></div>
-              <div class="profile-item"><dt>Favorite</dt><dd>猫・ゲーム・Web制作</dd></div>
+              <div class="profile-item"><dt>Name</dt><dd>nekosan2sd</dd></div>
+              <div class="profile-item"><dt>Brand</dt><dd>NEKO</dd></div>
+              <div class="profile-item"><dt>Love</dt><dd>猫 🐾</dd></div>
               <div class="profile-item"><dt>Learning</dt><dd>HTML / CSS / JS</dd></div>
             </dl>
 
             <details>
-              <summary>・立ち絵・隠し設定などを見る</summary>
+              <summary>・詳細プロフィールを見る</summary>
               <div class="details-content">
-                <p><b>趣味と好きなこと：</b><br>
-                PCいじり、新しいWEB技術のテスト、猫動画鑑賞。<br>
-                基本的に軽量でシンプルな環境が好きです（Linux/Debianにも興味津々！）。</p>
-                <br>
-                <p><b>アイコン・立ち絵について：</b><br>
-                黒猫モチーフのイラストを愛用しています。見かけたら仲良くしてくださいね！</p>
+                <p><b>猫への愛：</b><br>
+                あらゆる猫にリスペクトを払っています。Web開発の合間に見る猫の動画と画像が最高の癒やしです。</p>
               </div>
             </details>
           </section>
@@ -588,27 +571,27 @@
 
             <div class="interest-grid">
               <article class="interest-item">
-                <span class="interest-icon" aria-hidden="true">🐈</span>
-                <h3>猫</h3>
-                <p>黒猫をテーマにしたデザインや、猫に関係するものが大好きです。</p>
+                <span class="interest-icon" aria-hidden="true">🐱</span>
+                <h3>猫（大好き）</h3>
+                <p>猫に関するデザインやコンテンツが一番の好物です。</p>
               </article>
 
               <article class="interest-item">
                 <span class="interest-icon" aria-hidden="true">💻</span>
                 <h3>Web制作</h3>
-                <p>HTML・CSS・JavaScriptを使ったスッキリ動くサイト制作を練習中。</p>
+                <p>自分のアイデアをコードで形にする作業を楽しんでいます。</p>
               </article>
 
               <article class="interest-item">
                 <span class="interest-icon" aria-hidden="true">🎮</span>
                 <h3>ゲーム</h3>
-                <p>ゲームを遊ぶことや、Unity等で小さなゲームを作ることにも興味があります。</p>
+                <p>プレイすることも、自分でちょっとしたゲームを作ることも好きです。</p>
               </article>
 
               <article class="interest-item">
                 <span class="interest-icon" aria-hidden="true">🛠️</span>
-                <h3>便利ツール</h3>
-                <p>日常で使えるWebツールや、面白い仕掛けを考えるのが好きです。</p>
+                <h3>開発・カスタマイズ</h3>
+                <p>あどたん風サイトのように、個性的でカッコいいサイトを作るのが趣味です。</p>
               </article>
             </div>
           </section>
@@ -623,30 +606,20 @@
               <li>
                 <a href="https://nekosan2sd.github.io/" target="_blank" rel="noopener" class="link-card">
                   <span>
-                    <span class="link-title">TKD株式会社 公式サイト</span>
-                    <span class="link-description">最初に公開したGitHub Pagesサイトです。勢いと夢が詰まっています。</span>
+                    <span class="link-title">nekosan2sd.github.io</span>
+                    <span class="link-description">メインで公開している公式サイト / ポートフォリオです。</span>
                   </span>
                   <span class="link-arrow" aria-hidden="true">→</span>
                 </a>
               </li>
 
               <li>
-                <a href="https://nekosan2sd.github.io/kuroneko/" target="_blank" rel="noopener" class="link-card">
+                <a href="https://github.com/Nekosan2sd" target="_blank" rel="noopener" class="link-card">
                   <span>
-                    <span class="link-title">Kuroneko Home</span>
-                    <span class="link-description">現在表示している自己紹介＆ポートフォリオサイトです。</span>
+                    <span class="link-title">GitHub リポジトリ</span>
+                    <span class="link-description">Nekosan2sd のGitHubアカウントページです。</span>
                   </span>
                   <span class="link-arrow" aria-hidden="true">→</span>
-                </a>
-              </li>
-
-              <li>
-                <a href="#" data-coming-soon="true" class="link-card">
-                  <span>
-                    <span class="link-title">新しい作品（準備中）</span>
-                    <span class="link-description">次に公開するWebアプリやゲームを絶賛開発中！</span>
-                  </span>
-                  <span class="link-arrow" aria-hidden="true">…</span>
                 </a>
               </li>
             </ul>
@@ -655,26 +628,13 @@
           <section class="section-card" id="contacts" aria-labelledby="contacts-heading">
             <div class="section-heading">
               <div class="heading-icon" aria-hidden="true">📬</div>
-              <h2 id="contacts-heading">連絡先 & ゲームID</h2>
+              <h2 id="contacts-heading">連絡先</h2>
             </div>
 
             <ul class="contact-list">
               <li><span>GitHub</span><a href="https://github.com/Nekosan2sd" target="_blank" rel="noopener">@Nekosan2sd</a></li>
-              <li><span>X (Twitter)</span><a href="#" data-coming-soon="true">@Kuroneko_Dev</a></li>
-              <li><span>Discord</span><span>kuroneko_dev</span></li>
+              <li><span>Website</span><a href="https://nekosan2sd.github.io/" target="_blank" rel="noopener">nekosan2sd.github.io</a></li>
             </ul>
-
-            <details>
-              <summary>・ゲームアカウント / UID などを見る</summary>
-              <div class="details-content">
-                <ul class="contact-list" style="margin-top: 10px;">
-                  <li><span>Minecraft ID</span><span>Kuroneko_Craft</span></li>
-                  <li><span>原神 (UID)</span><span>800000000</span></li>
-                  <li><span>崩壊:スターレイル (UID)</span><span>800000000</span></li>
-                  <li><span>Steam ID</span><span>Kuroneko</span></li>
-                </ul>
-              </div>
-            </details>
           </section>
 
           <section class="section-card" id="environment" aria-labelledby="environment-heading">
@@ -687,15 +647,7 @@
               <div class="environment-item"><dt>公開先</dt><dd>GitHub Pages</dd></div>
               <div class="environment-item"><dt>使用技術</dt><dd>HTML / CSS / JavaScript</dd></div>
               <div class="environment-item"><dt>方針</dt><dd>軽量・高速・スマートフォン完全対応</dd></div>
-              <div class="environment-item"><dt>現在の目標</dt><dd>読みやすく、崩れにくいモダンサイトを作ること</dd></div>
             </dl>
-
-            <details>
-              <summary>・制作方針を詳しく見る</summary>
-              <div class="details-content">
-                <p>外部ライブラリを極力抑え、HTML・CSS・JavaScriptを中心に高速で動作する設計を目指しています。WebP画像を活用し、スマホでの読み込みストレスを削減しています。</p>
-              </div>
-            </details>
           </section>
 
           <section class="section-card" id="news" aria-labelledby="news-heading">
@@ -707,15 +659,7 @@
             <ul class="news-list">
               <li class="news-item">
                 <time datetime="2026-07-29">2026.07.29</time>
-                <p>あどたん風2カラムデザイン＆ギーク要素を導入し大改装！</p>
-              </li>
-              <li class="news-item">
-                <time datetime="2026-07-28">2026.07.28</time>
-                <p>iPad・スマートフォン対応を強化しました。</p>
-              </li>
-              <li class="news-item">
-                <time datetime="2026-07-28">2026.07.28</time>
-                <p>Kuroneko Home リポジトリを公開しました。</p>
+                <p>nekosan2sd (NEKO) 仕様でデザインをリニューアル！</p>
               </li>
             </ul>
           </section>
@@ -723,7 +667,7 @@
         </div>
 
         <footer class="page-footer">
-          <p id="copyright">© Kuroneko Home</p>
+          <p id="copyright">© nekosan2sd</p>
           <p>Built with HTML, CSS and JavaScript. Inspired by ギークスピリッツ ✨</p>
         </footer>
 
@@ -761,40 +705,40 @@
       });
     }
 
-    // 2. 準備中リンクの警告ダイアログ
-    const comingSoonLinks = document.querySelectorAll("[data-coming-soon='true']");
-    comingSoonLinks.forEach((link) => {
-      link.addEventListener("click", (event) => {
-        event.preventDefault();
-        window.alert("このページ/アカウントは現在準備中です 🐾");
-      });
-    });
-
-    // 3. 自動著作権年更新
+    // 2. 年自動更新
     const currentYear = new Date().getFullYear();
     const copyright = document.getElementById("copyright");
     if (copyright) {
-      copyright.textContent = `© ${currentYear} Kuroneko Home`;
+      copyright.textContent = `© ${currentYear} nekosan2sd`;
     }
 
-    // 4. あどたん風：ライブカウントダウンタイマー
-    function updateCountdown() {
-      const targetDate = new Date("2026-12-31T23:59:59").getTime();
-      const now = new Date().getTime();
-      const diff = targetDate - now;
+    // 3. 年越しカウントダウン（12月31日23:59:59まで）
+    function updateYearCountdown() {
+      const now = new Date();
+      const nextYear = now.getFullYear() + 1;
+      const targetDate = new Date(`January 1, ${nextYear} 00:00:00`).getTime();
+      const diff = targetDate - now.getTime();
 
       if (diff > 0) {
         const days = Math.floor(diff / (1000 * 60 * 60 * 24));
         const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-        document.getElementById("liveCountdown").textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+        const dStr = String(days).padStart(2, '0');
+        const hStr = String(hours).padStart(2, '0');
+        const mStr = String(minutes).padStart(2, '0');
+        const sStr = String(seconds).padStart(2, '0');
+
+        document.getElementById("yearCountdown").textContent = `${dStr}d ${hStr}h ${mStr}m ${sStr}s`;
+      } else {
+        document.getElementById("yearCountdown").textContent = "HAPPY NEW YEAR! 🎉";
       }
     }
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
+    setInterval(updateYearCountdown, 1000);
+    updateYearCountdown();
 
-    // 5. アクセスカウンター風ランダム加算（リフレッシュ感演出）
+    // 4. アクセスカウンター風ランダム数値
     const baseCounter = 1234 + Math.floor(Math.random() * 50);
     document.getElementById("counterNumber").textContent = String(baseCounter).padStart(6, '0');
   </script>
