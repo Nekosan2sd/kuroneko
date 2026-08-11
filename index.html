@@ -1,111 +1,61 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>URL保管庫</title>
+    <title>URL保管庫</title>
 
-<style>
-*{
-    box-sizing:border-box;
-}
+    <style>
+        body {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f8f8;
+            font-family:
+                "Yu Mincho",
+                "Hiragino Mincho ProN",
+                "Hiragino Mincho Pro",
+                serif;
+            line-height: 1.8;
+        }
 
-body{
-    max-width:1000px;
-    margin:auto;
-    padding:20px;
-    background:#f8f8f8;
-    color:#222;
-    font-family:"Yu Mincho","Hiragino Mincho ProN",serif;
-    line-height:1.8;
-}
+        #url-list a {
+            display: block;
+            color: #003399;
+            text-decoration: underline;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+        }
 
-h1{
-    font-size:clamp(32px,5vw,48px);
-    margin-bottom:10px;
-}
+        #url-list a:hover {
+            color: #001f66;
+        }
 
-.count{
-    color:#666;
-    margin-bottom:30px;
-}
-
-.entry{
-    padding:20px 0;
-}
-
-a{
-    color:#003399;
-    text-decoration:none;
-    word-break:break-all;
-}
-
-a:hover{
-    text-decoration:underline;
-}
-
-hr{
-    border:none;
-    border-top:1px solid #bbb;
-    margin:0;
-}
-
-footer{
-    margin-top:40px;
-    color:#666;
-    font-size:14px;
-}
-</style>
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<h1>中川URL保管庫</h1>
+    <div id="url-list"></div>
 
-<div class="count">
-登録数：2件
-</div>
-
-<div class="entry">
-
-<strong>URL：</strong><br>
-
+    <!-- この中にURLを1行ずつ入力 -->
+    <textarea id="url-source" hidden>
 https://github.com
-https://github.com
-</a>
+https://www.google.com
+https://example.com
+    </textarea>
 
-<br><br>
+    <script>
+        const urlSource = document.getElementById("url-source");
+        const urlList = document.getElementById("url-list");
 
-<strong>説明：</strong><br>
-
-Gitのリポジトリ管理サービス
-
-</div>
-
-<hr>
-
-<div class="entry">
-
-<strong>URL：</strong><br>
-
-https://google.com
-https://google.com
-</a>
-
-<br><br>
-
-<strong>説明：</strong><br>
-
-検索サイト
-
-</div>
-
-<hr>
-
-<footer>
-URL保管庫
-</footer>
-
-</body>
-</html>
+        const urls = urlSource.value
+            .split(/\r?\n/)
+            .map(url => url.trim())
+            .filter(url
