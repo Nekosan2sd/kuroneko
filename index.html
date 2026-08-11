@@ -15,12 +15,11 @@
             font-family:
                 "Yu Mincho",
                 "Hiragino Mincho ProN",
-                "Hiragino Mincho Pro",
                 serif;
             line-height: 1.8;
         }
 
-        #url-list a {
+        a {
             display: block;
             color: #003399;
             text-decoration: underline;
@@ -28,7 +27,7 @@
             word-break: break-word;
         }
 
-        #url-list a:hover {
+        a:hover {
             color: #001f66;
         }
 
@@ -42,20 +41,8 @@
 
 <body>
 
-    <div id="url-list"></div>
+    <a href="https://github.com" target="_blank" relps://www.google.comhttps://www.google.com</a>
+    <a href="https://example.com" target=m</a>
 
-    <!-- この中にURLを1行ずつ入力 -->
-    <textarea id="url-source" hidden>
-https://github.com
-https://www.google.com
-https://example.com
-    </textarea>
-
-    <script>
-        const urlSource = document.getElementById("url-source");
-        const urlList = document.getElementById("url-list");
-
-        const urls = urlSource.value
-            .split(/\r?\n/)
-            .map(url => url.trim())
-            .filter(url
+</body>
+</html>
