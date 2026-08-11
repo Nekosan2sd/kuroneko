@@ -7,13 +7,23 @@
     <title>URL保管庫</title>
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             max-width: 1000px;
             margin: 0 auto;
             padding: 20px;
             background-color: #f8f8f8;
+            color: #222;
             font-family: serif;
             line-height: 1.8;
+        }
+
+        h1 {
+            margin: 0 0 25px;
+            font-size: clamp(30px, 5vw, 46px);
         }
 
         .url {
@@ -26,6 +36,10 @@
             text-decoration: underline;
         }
 
+        .url a:hover {
+            color: #001f66;
+        }
+
         @media (max-width: 768px) {
             body {
                 padding: 15px;
@@ -36,52 +50,18 @@
 
 <body>
 
+    <h1>URL保管庫</h1>
+
     <div class="url">
-        https://github.comhttps://github.com</a>
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer">https://github.com</a>
     </div>
 
     <div class="url">
-        https://www.google.comhttps://www.google.com</a>
+        <a href="https://www.google.com" target="_blank" rel="noopener noreferrer">https://www.google.com</a>
     </div>
 
     <div class="url">
-        https://example.comhttps://example.com</a>
-    </div>
-
-    <div class="url">
-        https://github.comhttps://github.com</a>
-    </div>
-
-    <div class="url">
-        https://www.google.comhttps://www.google.com</a>
-    </div>
-
-    <div class="url">
-        https://example.comhttps://example.com</a>
-    </div>
-
-    <div class="url">
-        https://github.comhttps://github.com</a>
-    </div>
-
-    <div class="url">
-        https://www.google.comhttps://www.google.com</a>
-    </div>
-
-    <div class="url">
-        https://example.comhttps://example.com</a>
-    </div>
-    
-    <div class="url">
-        https://github.comhttps://github.com</a>
-    </div>
-
-    <div class="url">
-        https://www.google.comhttps://www.google.com</a>
-    </div>
-
-    <div class="url">
-        https://example.comhttps://example.com</a>
+        <a href="https://example.com" target="_blank" rel="noopener noreferrer">https://example.com</a>
     </div>
 
 </body>
