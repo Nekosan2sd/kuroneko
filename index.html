@@ -1,44 +1,214 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>URL保管庫</title>
+    <title>黒猫暗号 KNC1</title>
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        :root {
+            color-scheme: dark;
+
+            --background: #0d1117;
+            --panel: #161b22;
+            --input: #0d1117;
+            --border: #30363d;
+            --text: #e6edf3;
+            --subtext: #9da7b3;
+            --primary: #8250df;
+            --primary-hover: #6e40c9;
+            --success: #3fb950;
+            --danger: #f85149;
+        }
+
         body {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f8f8f8;
-            font-family: serif;
-            line-height: 1.8;
+            margin: 0;
+            background: var(--background);
+            color: var(--text);
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Hiragino Sans",
+                "Yu Gothic",
+                "Meiryo",
+                sans-serif;
+            line-height: 1.7;
+        }
+
+        header {
+            padding: 45px 20px 28px;
+            text-align: center;
         }
 
         h1 {
-            margin-bottom: 25px;
+            margin: 0;
+            font-size: clamp(30px, 7vw, 52px);
+            letter-spacing: 0.08em;
         }
 
-        .url {
-            margin-bottom: 5px;
+        header p {
+            margin: 10px 0 0;
+            color: var(--subtext);
+        }
+
+        main {
+            width: min(850px, calc(100% - 30px));
+            margin: 0 auto 60px;
+        }
+
+        .panel {
+            margin-bottom: 18px;
+            padding: 20px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: var(--panel);
+        }
+
+        .panel h2 {
+            margin: 0 0 14px;
+            font-size: 20px;
+        }
+
+        textarea,
+        input,
+        button {
+            font: inherit;
+        }
+
+        textarea,
+        input {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid var(--border);
+            border-radius: 7px;
+            background: var(--input);
+            color: var(--text);
+        }
+
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+            line-height: 1.6;
+        }
+
+        textarea:focus,
+        input:focus {
+            outline: 2px solid rgba(130, 80, 223, 0.3);
+            border-color: var(--primary);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            color: var(--subtext);
+            font-size: 14px;
+        }
+
+        .key-row {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto auto;
+            gap: 8px;
+        }
+
+        button {
+            min-height: 44px;
+            padding: 10px 17px;
+            border: 1px solid var(--border);
+            border-radius: 7px;
+            background: #21262d;
+            color: var(--text);
+            cursor: pointer;
+        }
+
+        button:hover {
+            border-color: var(--primary);
+        }
+
+        button.primary {
+            border-color: var(--primary);
+            background: var(--primary);
+            color: white;
+        }
+
+        button.primary:hover {
+            background: var(--primary-hover);
+        }
+
+        .button-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .button-row button {
+            flex: 1 1 135px;
+        }
+
+        #status {
+            min-height: 1.7em;
+            margin-top: 12px;
+            color: var(--subtext);
+        }
+
+        #status.success {
+            color: var(--success);
+        }
+
+        #status.error {
+            color: var(--danger);
+        }
+
+        .example {
+            padding: 14px;
+            border: 1px dashed var(--border);
+            border-radius: 8px;
+            background: var(--input);
             overflow-wrap: anywhere;
+            font-family:
+                ui-monospace,
+                SFMono-Regular,
+                Consolas,
+                monospace;
+            font-size: 13px;
         }
 
-        .url a {
-            color: #003399;
-            text-decoration: underline;
+        .notice {
+            padding: 15px;
+            border-left: 4px solid var(--primary);
+            border-radius: 7px;
+            background: rgba(130, 80, 223, 0.1);
+            color: #c9c1d9;
+            font-size: 14px;
         }
 
-        .text {
-            margin-left: 10px;
-            color: #444;
+        footer {
+            padding: 25px 15px;
+            color: var(--subtext);
+            text-align: center;
+            font-size: 13px;
         }
 
-        @media (max-width: 768px) {
-            body {
-                padding: 15px;
+        @media (max-width: 600px) {
+            header {
+                padding-top: 30px;
+            }
+
+            .panel {
+                padding: 16px;
+            }
+
+            .key-row {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .key-row input {
+                grid-column: 1 / -1;
             }
         }
     </style>
@@ -46,114 +216,181 @@
 
 <body>
 
-    <h1>URL保管庫</h1>
+<header>
+    <h1>黒猫暗号</h1>
+    <p>Kuro Neko Cipher 1 ― 数字と記号へ変換</p>
+</header>
 
-    <div class="url">
-        <a href="https://github.com" target="_blank" rel="noopener noreferrer">https://github.com</a>
-        <span class="text">GitHub</span>
+<main>
+
+    <section class="panel">
+        <h2>入力</h2>
+
+        <textarea
+            id="input-text"
+            placeholder="暗号化したい文章、またはKNC1形式の暗号文を入力してください。"
+        ></textarea>
+
+        <div class="button-row">
+            <button type="button" id="sample-button">
+                サンプル入力
+            </button>
+
+            <button type="button" id="paste-button">
+                貼り付け
+            </button>
+
+            <button type="button" id="clear-button">
+                全消去
+            </button>
+        </div>
+    </section>
+
+    <section class="panel">
+        <h2>暗号キー</h2>
+
+        <label for="key-input">
+            暗号化と復号には、同じキーが必要です
+        </label>
+
+        <div class="key-row">
+            <input
+                id="key-input"
+                type="password"
+                placeholder="ここにキーを入力"
+                autocomplete="off"
+            >
+
+            <button type="button" id="show-key-button">
+                表示
+            </button>
+
+            <button type="button" id="random-key-button">
+                自動生成
+            </button>
+        </div>
+    </section>
+
+    <section class="panel">
+        <h2>実行</h2>
+
+        <div class="button-row">
+            <button type="button" id="encrypt-button" class="primary">
+                数字・記号に暗号化
+            </button>
+
+            <button type="button" id="decrypt-button">
+                元の文章に復号
+            </button>
+
+            <button type="button" id="swap-button">
+                入力と結果を交換
+            </button>
+        </div>
+
+        <div id="status"></div>
+    </section>
+
+    <section class="panel">
+        <h2>結果</h2>
+
+        <textarea
+            id="output-text"
+            readonly
+            placeholder="変換結果がここに表示されます。"
+        ></textarea>
+
+        <div class="button-row">
+            <button type="button" id="copy-button" class="primary">
+                結果をコピー
+            </button>
+
+            <button type="button" id="output-clear-button">
+                結果を消去
+            </button>
+        </div>
+    </section>
+
+    <section class="panel">
+        <h2>暗号文の例</h2>
+
+        <div class="example">
+            KNC1:◆137-◇044-▲219-△008-●175-○231
+        </div>
+    </section>
+
+    <div class="notice">
+        黒猫暗号は、メッセージ交換・謎解き・学習用に作った独自の遊び用暗号です。
+        本物のパスワード、住所、個人情報、重要な秘密の保護には使用しないでください。
+        変換処理はすべてブラウザ内で行い、入力内容を外部へ送信しません。
     </div>
 
-    <div class="url">
-        <a href="https://www.google.com" target="_blank" rel="noopener noreferrer">https://www.google.com</a>
-        <span class="text">Google検索</span>
-    </div>
+</main>
 
-    <div class="url">
-        <a href="https://example.com" target="_blank" rel="noopener noreferrer">https://example.com</a>
-        <span class="text">サンプルサイト</span>
-    </div>
+<footer>
+    黒猫暗号 KNC1
+</footer>
 
-    <div class="url">
-        <a href="https://github.com" target="_blank" rel="noopener noreferrer">https://github.com</a>
-        <span class="text">GitHub</span>
-    </div>
+<script>
+    "use strict";
 
-    <div class="url">
-        <a href="https://www.google.com" target="_blank" rel="noopener noreferrer">https://www.google.com</a>
-        <span class="text">Google検索</span>
-    </div>
+    const inputText = document.getElementById("input-text");
+    const outputText = document.getElementById("output-text");
+    const keyInput = document.getElementById("key-input");
+    const statusElement = document.getElementById("status");
 
-    <div class="url">
-        <a href="https://example.com" target="_blank" rel="noopener noreferrer">https://example.com</a>
-        <span class="text">サンプルサイト</span>
-    </div>
+    const symbols = [
+        "◆",
+        "◇",
+        "▲",
+        "△",
+        "●",
+        "○",
+        "■",
+        "□",
+        "★",
+        "☆"
+    ];
 
-    <div class="url">
-        <a href="https://github.com" target="_blank" rel="noopener noreferrer">https://github.com</a>
-        <span class="text">GitHub</span>
-    </div>
+    function setStatus(message, type = "") {
+        statusElement.textContent = message;
+        statusElement.className = "";
 
-    <div class="url">
-        <a href="https://www.google.com" target="_blank" rel="noopener noreferrer">https://www.google.com</a>
-        <span class="text">Google検索</span>
-    </div>
+        if (type) {
+            statusElement.classList.add(type);
+        }
+    }
 
-    <div class="url">
-        <a href="https://example.com" target="_blank" rel="noopener noreferrer">https://example.com</a>
-        <span class="text">サンプルサイト</span>
-    </div>
+    function getKeyBytes() {
+        const key = keyInput.value;
 
-    <div class="url">
-        <a href="https://github.com" target="_blank" rel="noopener noreferrer">https://github.com</a>
-        <span class="text">GitHub</span>
-    </div>
+        if (key.length === 0) {
+            throw new Error("暗号キーを入力してください。");
+        }
 
-    <div class="url">
-        <a href="https://www.google.com" target="_blank" rel="noopener noreferrer">https://www.google.com</a>
-        <span class="text">Google検索</span>
-    </div>
+        return new TextEncoder().encode(key);
+    }
 
-    <div class="url">
-        <a href="https://example.com" target="_blank" rel="noopener noreferrer">https://example.com</a>
-        <span class="text">サンプルサイト</span>
-    </div>
+    function encryptKNC1(text, keyBytes) {
+        if (text.length === 0) {
+            throw new Error("暗号化する文章を入力してください。");
+        }
 
-    <div class="url">
-        <a href="https://github.com" target="_blank" rel="noopener noreferrer">https://github.com</a>
-        <span class="text">GitHub</span>
-    </div>
+        const textBytes = new TextEncoder().encode(text);
+        const parts = [];
 
-    <div class="url">
-        <a href="https://www.google.com" target="_blank" rel="noopener noreferrer">https://www.google.com</a>
-        <span class="text">Google検索</span>
-    </div>
+        for (let index = 0; index < textBytes.length; index++) {
+            const originalByte = textBytes[index];
+            const keyByte = keyBytes[index % keyBytes.length];
 
-    <div class="url">
-        <a href="https://example.com" target="_blank" rel="noopener noreferrer">https://example.com</a>
-        <span class="text">サンプルサイト</span>
-    </div>
+            const positionValue =
+                ((index + 1) * 37) % 256;
 
-    <div class="url">
-        <a href="https://github.com" target="_blank" rel="noopener noreferrer">https://github.com</a>
-        <span class="text">GitHub</span>
-    </div>
+            const encryptedByte =
+                (
+                    originalByte +
+                    keyByte +
+                    positionValue
+                ) % 256;
 
-    <div class="url">
-        <a href="https://www.google.com" target="_blank" rel="noopener noreferrer">https://www.google.com</a>
-        <span class="text">Google検索</span>
-    </div>
-
-    <div class="url">
-        <a href="https://example.com" target="_blank" rel="noopener noreferrer">https://example.com</a>
-        <span class="text">サンプルサイト</span>
-    </div>
-
-    <div class="url">
-        <a href="https://github.com" target="_blank" rel="noopener noreferrer">https://github.com</a>
-        <span class="text">GitHub</span>
-    </div>
-
-    <div class="url">
-        <a href="https://www.google.com" target="_blank" rel="noopener noreferrer">https://www.google.com</a>
-        <span class="text">Google検索</span>
-    </div>
-
-    <div class="url">
-        <a href="https://example.com" target="_blank" rel="noopener noreferrer">https://example.com</a>
-        <span class="text">サンプルサイト</span>
-    </div>
-
-
-</body>
-
-</html>
+            
