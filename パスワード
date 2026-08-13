@@ -127,7 +127,7 @@
     </main>
 
     <script>
-        const correctPassword = "ここに好きなパスワード";
+        const correctPassword = "112424427423";
 
         const loginArea = document.getElementById("login");
         const contents = document.getElementById("contents");
