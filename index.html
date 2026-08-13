@@ -2,76 +2,59 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>黒猫暗号 KNC1</title>
+    <title>黒猫暗号 KNC2</title>
 
     <style>
         * {
             box-sizing: border-box;
         }
 
-        :root {
-            color-scheme: dark;
-
-            --background: #0d1117;
-            --panel: #161b22;
-            --input: #0d1117;
-            --border: #30363d;
-            --text: #e6edf3;
-            --subtext: #9da7b3;
-            --primary: #8250df;
-            --primary-hover: #6e40c9;
-            --success: #3fb950;
-            --danger: #f85149;
-        }
-
         body {
             margin: 0;
-            background: var(--background);
-            color: var(--text);
+            background: #0d1117;
+            color: #e6edf3;
             font-family:
                 -apple-system,
                 BlinkMacSystemFont,
                 "Hiragino Sans",
                 "Yu Gothic",
-                "Meiryo",
                 sans-serif;
-            line-height: 1.7;
+            line-height: 1.65;
+        }
+
+        main,
+        header {
+            width: min(850px, calc(100% - 28px));
+            margin: auto;
         }
 
         header {
-            padding: 45px 20px 28px;
+            padding: 38px 0 22px;
             text-align: center;
         }
 
         h1 {
             margin: 0;
-            font-size: clamp(30px, 7vw, 52px);
-            letter-spacing: 0.08em;
+            font-size: clamp(30px, 7vw, 50px);
         }
 
         header p {
-            margin: 10px 0 0;
-            color: var(--subtext);
-        }
-
-        main {
-            width: min(850px, calc(100% - 30px));
-            margin: 0 auto 60px;
+            color: #9da7b3;
         }
 
         .panel {
-            margin-bottom: 18px;
-            padding: 20px;
-            border: 1px solid var(--border);
+            margin-bottom: 16px;
+            padding: 18px;
+            border: 1px solid #30363d;
             border-radius: 12px;
-            background: var(--panel);
+            background: #161b22;
         }
 
-        .panel h2 {
-            margin: 0 0 14px;
-            font-size: 20px;
+        h2 {
+            margin: 0 0 12px;
+            font-size: 19px;
         }
 
         textarea,
@@ -83,124 +66,105 @@
         textarea,
         input {
             width: 100%;
-            padding: 13px;
-            border: 1px solid var(--border);
+            padding: 12px;
+            border: 1px solid #30363d;
             border-radius: 7px;
-            background: var(--input);
-            color: var(--text);
+            background: #0d1117;
+            color: #e6edf3;
         }
 
         textarea {
-            min-height: 150px;
+            min-height: 145px;
             resize: vertical;
-            line-height: 1.6;
-        }
-
-        textarea:focus,
-        input:focus {
-            outline: 2px solid rgba(130, 80, 223, 0.3);
-            border-color: var(--primary);
-        }
-
-        label {
-            display: block;
-            margin-bottom: 6px;
-            color: var(--subtext);
-            font-size: 14px;
-        }
-
-        .key-row {
-            display: grid;
-            grid-template-columns: minmax(0, 1fr) auto auto;
-            gap: 8px;
-        }
-
-        button {
-            min-height: 44px;
-            padding: 10px 17px;
-            border: 1px solid var(--border);
-            border-radius: 7px;
-            background: #21262d;
-            color: var(--text);
-            cursor: pointer;
-        }
-
-        button:hover {
-            border-color: var(--primary);
-        }
-
-        button.primary {
-            border-color: var(--primary);
-            background: var(--primary);
-            color: white;
-        }
-
-        button.primary:hover {
-            background: var(--primary-hover);
-        }
-
-        .button-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 12px;
-        }
-
-        .button-row button {
-            flex: 1 1 135px;
-        }
-
-        #status {
-            min-height: 1.7em;
-            margin-top: 12px;
-            color: var(--subtext);
-        }
-
-        #status.success {
-            color: var(--success);
-        }
-
-        #status.error {
-            color: var(--danger);
-        }
-
-        .example {
-            padding: 14px;
-            border: 1px dashed var(--border);
-            border-radius: 8px;
-            background: var(--input);
             overflow-wrap: anywhere;
             font-family:
                 ui-monospace,
                 SFMono-Regular,
                 Consolas,
                 monospace;
-            font-size: 13px;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: #8250df;
+            outline: 2px solid #8250df66;
+        }
+
+        .key-row {
+            display: grid;
+            grid-template-columns: 1fr auto auto;
+            gap: 8px;
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .buttons button {
+            flex: 1 1 130px;
+        }
+
+        button {
+            min-height: 43px;
+            padding: 9px 15px;
+            border: 1px solid #30363d;
+            border-radius: 7px;
+            background: #21262d;
+            color: #e6edf3;
+            cursor: pointer;
+        }
+
+        button:hover {
+            border-color: #8250df;
+        }
+
+        button.primary {
+            border-color: #8250df;
+            background: #8250df;
+            color: #fff;
+        }
+
+        .status {
+            min-height: 1.6em;
+            margin-top: 10px;
+            color: #9da7b3;
+        }
+
+        .status.ok {
+            color: #3fb950;
+        }
+
+        .status.error {
+            color: #f85149;
         }
 
         .notice {
-            padding: 15px;
-            border-left: 4px solid var(--primary);
+            margin-bottom: 40px;
+            padding: 14px;
+            border-left: 4px solid #8250df;
             border-radius: 7px;
-            background: rgba(130, 80, 223, 0.1);
+            background: #8250df18;
             color: #c9c1d9;
             font-size: 14px;
         }
 
-        footer {
-            padding: 25px 15px;
-            color: var(--subtext);
-            text-align: center;
+        .counter {
+            margin-top: 5px;
+            color: #9da7b3;
             font-size: 13px;
+            text-align: right;
         }
 
         @media (max-width: 600px) {
             header {
-                padding-top: 30px;
+                padding-top: 26px;
             }
 
             .panel {
-                padding: 16px;
+                padding: 15px;
             }
 
             .key-row {
@@ -217,8 +181,8 @@
 <body>
 
 <header>
-    <h1>黒猫暗号</h1>
-    <p>Kuro Neko Cipher 1 ― 数字と記号へ変換</p>
+    <h1>黒猫暗号 KNC2</h1>
+    <p>文章を短い「記号＋数字」へ変換します</p>
 </header>
 
 <main>
@@ -228,44 +192,46 @@
 
         <textarea
             id="input-text"
-            placeholder="暗号化したい文章、またはKNC1形式の暗号文を入力してください。"
+            maxlength="10000"
+            placeholder="文章、または ※2: で始まる暗号文"
         ></textarea>
 
-        <div class="button-row">
-            <button type="button" id="sample-button">
-                サンプル入力
+        <div id="counter" class="counter">
+            0 / 10,000文字
+        </div>
+
+        <div class="buttons">
+            <button id="sample-button" type="button">
+                サンプル
             </button>
 
-            <button type="button" id="paste-button">
+            <button id="paste-button" type="button">
                 貼り付け
             </button>
 
-            <button type="button" id="clear-button">
+            <button id="clear-button" type="button">
                 全消去
             </button>
         </div>
     </section>
 
     <section class="panel">
-        <h2>暗号キー</h2>
-
-        <label for="key-input">
-            暗号化と復号には、同じキーが必要です
-        </label>
+        <h2>キー</h2>
 
         <div class="key-row">
             <input
                 id="key-input"
                 type="password"
-                placeholder="ここにキーを入力"
+                maxlength="200"
                 autocomplete="off"
+                placeholder="同じキーで復号します"
             >
 
-            <button type="button" id="show-key-button">
+            <button id="show-key-button" type="button">
                 表示
             </button>
 
-            <button type="button" id="random-key-button">
+            <button id="random-key-button" type="button">
                 自動生成
             </button>
         </div>
@@ -274,21 +240,25 @@
     <section class="panel">
         <h2>実行</h2>
 
-        <div class="button-row">
-            <button type="button" id="encrypt-button" class="primary">
-                数字・記号に暗号化
+        <div class="buttons">
+            <button
+                id="encrypt-button"
+                class="primary"
+                type="button"
+            >
+                暗号化
             </button>
 
-            <button type="button" id="decrypt-button">
-                元の文章に復号
+            <button id="decrypt-button" type="button">
+                復号
             </button>
 
-            <button type="button" id="swap-button">
+            <button id="swap-button" type="button">
                 入力と結果を交換
             </button>
         </div>
 
-        <div id="status"></div>
+        <div id="status" class="status"></div>
     </section>
 
     <section class="panel">
@@ -297,100 +267,741 @@
         <textarea
             id="output-text"
             readonly
-            placeholder="変換結果がここに表示されます。"
+            placeholder="結果"
         ></textarea>
 
-        <div class="button-row">
-            <button type="button" id="copy-button" class="primary">
+        <div class="buttons">
+            <button
+                id="copy-button"
+                class="primary"
+                type="button"
+            >
                 結果をコピー
             </button>
 
-            <button type="button" id="output-clear-button">
+            <button id="clear-output-button" type="button">
                 結果を消去
             </button>
         </div>
     </section>
 
-    <section class="panel">
-        <h2>暗号文の例</h2>
-
-        <div class="example">
-            KNC1:◆137-◇044-▲219-△008-●175-○231
-        </div>
-    </section>
-
     <div class="notice">
-        黒猫暗号は、メッセージ交換・謎解き・学習用に作った独自の遊び用暗号です。
-        本物のパスワード、住所、個人情報、重要な秘密の保護には使用しないでください。
-        変換処理はすべてブラウザ内で行い、入力内容を外部へ送信しません。
+        遊び・謎解き用の独自方式です。
+        実際のパスワード・個人情報・重要な秘密の保護には使用しないでください。
+        処理はこのブラウザ内だけで行われます。
+        同じ文章とキーでも、暗号化のたびに異なる結果になります。
     </div>
 
 </main>
 
-<footer>
-    黒猫暗号 KNC1
-</footer>
-
 <script>
     "use strict";
 
-    const inputText = document.getElementById("input-text");
-    const outputText = document.getElementById("output-text");
-    const keyInput = document.getElementById("key-input");
-    const statusElement = document.getElementById("status");
+    const SYMBOLS = Array.from(
+        "◆◇▲△●○■□★☆♠♣♥♦♨※〒〓◎◉◈◐◑◒◓◔"
+    );
 
-    const symbols = [
-        "◆",
-        "◇",
-        "▲",
-        "△",
-        "●",
-        "○",
-        "■",
-        "□",
-        "★",
-        "☆"
-    ];
+    const HEADER = "※2:";
+    const MAX_INPUT = 10000;
+
+    const inputText =
+        document.getElementById("input-text");
+
+    const outputText =
+        document.getElementById("output-text");
+
+    const keyInput =
+        document.getElementById("key-input");
+
+    const statusElement =
+        document.getElementById("status");
+
+    const counter =
+        document.getElementById("counter");
 
     function setStatus(message, type = "") {
         statusElement.textContent = message;
-        statusElement.className = "";
+        statusElement.className = "status";
 
         if (type) {
             statusElement.classList.add(type);
         }
     }
 
-    function getKeyBytes() {
-        const key = keyInput.value;
+    function getNormalizedKeyBytes() {
+        const normalizedKey =
+            keyInput.value.normalize("NFC");
 
-        if (key.length === 0) {
-            throw new Error("暗号キーを入力してください。");
+        if (normalizedKey.length === 0) {
+            throw new Error(
+                "キーを入力してください。"
+            );
         }
 
-        return new TextEncoder().encode(key);
+        return new TextEncoder().encode(
+            normalizedKey
+        );
     }
 
-    function encryptKNC1(text, keyBytes) {
-        if (text.length === 0) {
-            throw new Error("暗号化する文章を入力してください。");
+    function calculateCheckValue(
+        bytes,
+        keyBytes,
+        nonce
+    ) {
+        let hash = 0x811c9dc5;
+
+        function mixByte(byte) {
+            hash ^= byte;
+            hash = Math.imul(
+                hash,
+                0x01000193
+            ) >>> 0;
         }
 
-        const textBytes = new TextEncoder().encode(text);
-        const parts = [];
+        for (const byte of keyBytes) {
+            mixByte(byte);
+        }
 
-        for (let index = 0; index < textBytes.length; index++) {
-            const originalByte = textBytes[index];
-            const keyByte = keyBytes[index % keyBytes.length];
+        for (const byte of nonce) {
+            mixByte(byte);
+        }
 
-            const positionValue =
-                ((index + 1) * 37) % 256;
+        for (const byte of bytes) {
+            mixByte(byte);
+        }
 
-            const encryptedByte =
+        return hash >>> 0;
+    }
+
+    function makeRandomSeed(
+        keyBytes,
+        nonce
+    ) {
+        const identifier =
+            new Uint8Array([
+                0x4b,
+                0x4e,
+                0x43,
+                0x32
+            ]);
+
+        return (
+            calculateCheckValue(
+                identifier,
+                keyBytes,
+                nonce
+            ) || 0x9e3779b9
+        );
+    }
+
+    function createNumberGenerator(seed) {
+        let value = seed >>> 0;
+
+        return function () {
+            value ^= value << 13;
+            value ^= value >>> 17;
+            value ^= value << 5;
+
+            return value >>> 0;
+        };
+    }
+
+    function numberToFourBytes(number) {
+        return new Uint8Array([
+            (number >>> 24) & 255,
+            (number >>> 16) & 255,
+            (number >>> 8) & 255,
+            number & 255
+        ]);
+    }
+
+    function fourBytesToNumber(
+        bytes,
+        offset
+    ) {
+        return (
+            (
+                bytes[offset] << 24
+            ) |
+            (
+                bytes[offset + 1] << 16
+            ) |
+            (
+                bytes[offset + 2] << 8
+            ) |
+            bytes[offset + 3]
+        ) >>> 0;
+    }
+
+    function encodeByte(byte) {
+        const symbolIndex =
+            Math.floor(byte / 10);
+
+        const digit =
+            byte % 10;
+
+        return (
+            SYMBOLS[symbolIndex] +
+            String(digit)
+        );
+    }
+
+    function decodePairs(text) {
+        const characters =
+            Array.from(text);
+
+        if (
+            characters.length === 0 ||
+            characters.length % 2 !== 0
+        ) {
+            throw new Error(
+                "暗号本文が欠けています。2文字1組になっていません。"
+            );
+        }
+
+        const bytes =
+            new Uint8Array(
+                characters.length / 2
+            );
+
+        for (
+            let index = 0;
+            index < characters.length;
+            index += 2
+        ) {
+            const symbol =
+                characters[index];
+
+            const digitText =
+                characters[index + 1];
+
+            const symbolIndex =
+                SYMBOLS.indexOf(symbol);
+
+            const pairNumber =
+                index / 2 + 1;
+
+            if (symbolIndex < 0) {
+                throw new Error(
+                    pairNumber +
+                    "組目の記号が正しくありません。"
+                );
+            }
+
+            if (!/^[0-9]$/.test(digitText)) {
+                throw new Error(
+                    pairNumber +
+                    "組目の数字は半角0～9で入力してください。"
+                );
+            }
+
+            const value =
+                symbolIndex * 10 +
+                Number(digitText);
+
+            if (value > 255) {
+                throw new Error(
+                    pairNumber +
+                    "組目の値が範囲外です。"
+                );
+            }
+
+            bytes[index / 2] = value;
+        }
+
+        return bytes;
+    }
+
+    function encryptText(
+        text,
+        keyBytes
+    ) {
+        if (text.length === 0) {
+            throw new Error(
+                "文章を入力してください。"
+            );
+        }
+
+        if (text.length > MAX_INPUT) {
+            throw new Error(
+                "入力は10,000文字以内にしてください。"
+            );
+        }
+
+        const plainBytes =
+            new TextEncoder().encode(text);
+
+        const nonce =
+            crypto.getRandomValues(
+                new Uint8Array(4)
+            );
+
+        const checkValue =
+            calculateCheckValue(
+                plainBytes,
+                keyBytes,
+                nonce
+            );
+
+        const checkBytes =
+            numberToFourBytes(
+                checkValue
+            );
+
+        const payload =
+            new Uint8Array(
+                plainBytes.length + 4
+            );
+
+        payload.set(
+            plainBytes,
+            0
+        );
+
+        payload.set(
+            checkBytes,
+            plainBytes.length
+        );
+
+        const randomNumber =
+            createNumberGenerator(
+                makeRandomSeed(
+                    keyBytes,
+                    nonce
+                )
+            );
+
+        const encryptedBytes =
+            new Uint8Array(
+                payload.length
+            );
+
+        for (
+            let index = 0;
+            index < payload.length;
+            index++
+        ) {
+            encryptedBytes[index] =
+                payload[index] ^
                 (
-                    originalByte +
-                    keyByte +
-                    positionValue
-                ) % 256;
+                    randomNumber() & 255
+                );
+        }
 
-            
+        let body = "";
+
+        for (const byte of nonce) {
+            body += encodeByte(byte);
+        }
+
+        for (const byte of encryptedBytes) {
+            body += encodeByte(byte);
+        }
+
+        return HEADER + body;
+    }
+
+    function decryptText(
+        cipherText,
+        keyBytes
+    ) {
+        const normalizedCipherText =
+            cipherText.trim();
+
+        if (
+            !normalizedCipherText.startsWith(
+                HEADER
+            )
+        ) {
+            throw new Error(
+                "※2: で始まるKNC2暗号文ではありません。"
+            );
+        }
+
+        const encryptedBody =
+            normalizedCipherText.slice(
+                HEADER.length
+            );
+
+        const packedBytes =
+            decodePairs(
+                encryptedBody
+            );
+
+        if (packedBytes.length < 8) {
+            throw new Error(
+                "暗号文が短すぎます。"
+            );
+        }
+
+        const nonce =
+            packedBytes.slice(0, 4);
+
+        const encryptedBytes =
+            packedBytes.slice(4);
+
+        const randomNumber =
+            createNumberGenerator(
+                makeRandomSeed(
+                    keyBytes,
+                    nonce
+                )
+            );
+
+        const payload =
+            new Uint8Array(
+                encryptedBytes.length
+            );
+
+        for (
+            let index = 0;
+            index < encryptedBytes.length;
+            index++
+        ) {
+            payload[index] =
+                encryptedBytes[index] ^
+                (
+                    randomNumber() & 255
+                );
+        }
+
+        if (payload.length < 4) {
+            throw new Error(
+                "暗号文が壊れています。"
+            );
+        }
+
+        const plainBytes =
+            payload.slice(
+                0,
+                payload.length - 4
+            );
+
+        const storedCheckValue =
+            fourBytesToNumber(
+                payload,
+                payload.length - 4
+            );
+
+        const actualCheckValue =
+            calculateCheckValue(
+                plainBytes,
+                keyBytes,
+                nonce
+            );
+
+        if (
+            storedCheckValue !==
+            actualCheckValue
+        ) {
+            throw new Error(
+                "キーが違うか、暗号文が変更されています。"
+            );
+        }
+
+        try {
+            return new TextDecoder(
+                "utf-8",
+                {
+                    fatal: true
+                }
+            ).decode(plainBytes);
+        } catch {
+            throw new Error(
+                "文章として復号できませんでした。"
+            );
+        }
+    }
+
+    function run(mode) {
+        try {
+            const keyBytes =
+                getNormalizedKeyBytes();
+
+            if (mode === "encrypt") {
+                outputText.value =
+                    encryptText(
+                        inputText.value,
+                        keyBytes
+                    );
+
+                setStatus(
+                    "暗号化しました。",
+                    "ok"
+                );
+            } else {
+                outputText.value =
+                    decryptText(
+                        inputText.value,
+                        keyBytes
+                    );
+
+                setStatus(
+                    "復号しました。",
+                    "ok"
+                );
+            }
+        } catch (error) {
+            outputText.value = "";
+
+            setStatus(
+                error.message,
+                "error"
+            );
+        }
+    }
+
+    async function copyOutput() {
+        if (
+            outputText.value.length === 0
+        ) {
+            setStatus(
+                "コピーする結果がありません。",
+                "error"
+            );
+
+            return;
+        }
+
+        try {
+            await navigator.clipboard.writeText(
+                outputText.value
+            );
+
+            setStatus(
+                "結果をコピーしました。",
+                "ok"
+            );
+        } catch {
+            outputText.focus();
+            outputText.select();
+
+            const copied =
+                document.execCommand("copy");
+
+            setStatus(
+                copied
+                    ? "結果をコピーしました。"
+                    : "結果欄を長押ししてコピーしてください。",
+                copied ? "ok" : "error"
+            );
+        }
+    }
+
+    async function pasteInput() {
+        try {
+            inputText.value =
+                await navigator.clipboard.readText();
+
+            updateCounter();
+
+            setStatus(
+                "貼り付けました。",
+                "ok"
+            );
+        } catch {
+            setStatus(
+                "入力欄を長押しして貼り付けてください。",
+                "error"
+            );
+        }
+    }
+
+    function generateRandomKey() {
+        const characters =
+            "ABCDEFGHJKLMNPQRSTUVWXYZ" +
+            "abcdefghijkmnopqrstuvwxyz" +
+            "23456789";
+
+        const randomValues =
+            crypto.getRandomValues(
+                new Uint32Array(20)
+            );
+
+        keyInput.value =
+            Array.from(
+                randomValues,
+                number =>
+                    characters[
+                        number %
+                        characters.length
+                    ]
+            ).join("");
+
+        keyInput.type = "text";
+
+        document.getElementById(
+            "show-key-button"
+        ).textContent = "隠す";
+
+        setStatus(
+            "ランダムキーを生成しました。",
+            "ok"
+        );
+    }
+
+    function updateCounter() {
+        counter.textContent =
+            inputText.value.length
+                .toLocaleString() +
+            " / " +
+            MAX_INPUT.toLocaleString() +
+            "文字";
+    }
+
+    document
+        .getElementById(
+            "encrypt-button"
+        )
+        .addEventListener(
+            "click",
+            () => run("encrypt")
+        );
+
+    document
+        .getElementById(
+            "decrypt-button"
+        )
+        .addEventListener(
+            "click",
+            () => run("decrypt")
+        );
+
+    document
+        .getElementById(
+            "sample-button"
+        )
+        .addEventListener(
+            "click",
+            () => {
+                inputText.value =
+                    "黒猫暗号 KNC2 の動作確認です！ 🐈‍⬛";
+
+                updateCounter();
+
+                setStatus(
+                    "サンプルを入力しました。",
+                    "ok"
+                );
+            }
+        );
+
+    document
+        .getElementById(
+            "clear-button"
+        )
+        .addEventListener(
+            "click",
+            () => {
+                inputText.value = "";
+                outputText.value = "";
+                keyInput.value = "";
+
+                updateCounter();
+
+                setStatus(
+                    "すべて消去しました。"
+                );
+            }
+        );
+
+    document
+        .getElementById(
+            "clear-output-button"
+        )
+        .addEventListener(
+            "click",
+            () => {
+                outputText.value = "";
+
+                setStatus(
+                    "結果を消去しました。"
+                );
+            }
+        );
+
+    document
+        .getElementById(
+            "swap-button"
+        )
+        .addEventListener(
+            "click",
+            () => {
+                const temporary =
+                    inputText.value;
+
+                inputText.value =
+                    outputText.value;
+
+                outputText.value =
+                    temporary;
+
+                updateCounter();
+
+                setStatus(
+                    "入力と結果を交換しました。",
+                    "ok"
+                );
+            }
+        );
+
+    document
+        .getElementById(
+            "show-key-button"
+        )
+        .addEventListener(
+            "click",
+            event => {
+                const showKey =
+                    keyInput.type ===
+                    "password";
+
+                keyInput.type =
+                    showKey
+                        ? "text"
+                        : "password";
+
+                event.currentTarget.textContent =
+                    showKey
+                        ? "隠す"
+                        : "表示";
+            }
+        );
+
+    document
+        .getElementById(
+            "random-key-button"
+        )
+        .addEventListener(
+            "click",
+            generateRandomKey
+        );
+
+    document
+        .getElementById(
+            "copy-button"
+        )
+        .addEventListener(
+            "click",
+            copyOutput
+        );
+
+    document
+        .getElementById(
+            "paste-button"
+        )
+        .addEventListener(
+            "click",
+            pasteInput
+        );
+
+    inputText.addEventListener(
+        "input",
+        updateCounter
+    );
+
+    updateCounter();
+</script>
+
+</body>
+</html>
