@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>URL保管庫</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f8f8;
+            color: #222;
+            font-family: serif;
+            line-height: 1.8;
+        }
+
+        h1 {
+            margin: 0 0 25px;
+            font-size: clamp(30px, 5vw, 46px);
+        }
+
+        #login {
+            margin-top: 40px;
+        }
+
+        #password {
+            width: 100%;
+            max-width: 320px;
+            padding: 12px;
+            border: 1px solid #999;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        #login-button {
+            display: block;
+            margin-top: 12px;
+            padding: 10px 25px;
+            border: 1px solid #777;
+            border-radius: 5px;
+            background-color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #error {
+            margin-top: 12px;
+            color: #b00020;
+        }
+
+        #contents {
+            display: none;
+        }
+
+        .url {
+            margin-bottom: 5px;
+            overflow-wrap: anywhere;
+        }
+
+        .url a {
+            color: #003399;
+            text-decoration: underline;
+        }
+
+        .text {
+            margin-left: 10px;
+            color: #444;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+
+            .text {
+                margin-left: 8px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <section id="login">
+        <h1>URL保管庫</h1>
+
+        <p>パスワードを入力してください。</p>
+
+        <input
+            id="password"
+            type="password"
+            placeholder="パスワード"
+            autocomplete="current-password"
+        >
+
+        <button id="login-button" type="button">
+            開く
+        </button>
+
+        <div id="error"></div>
+    </section>
+
+    <main id="contents">
+        <h1>URL保管庫</h1>
+
+        <div class="url">
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer">https://github.com</a>
+            <span class="text">GitHub</span>
+        </div>
+
+        <div class="url">
+            <a href="https://www.google.com" target="_blank" rel="noopener noreferrer">https://www.google.com</a>
+            <span class="text">Google検索</span>
+        </div>
+
+        <div class="url">
+            <a href="https://example.com" target="_blank" rel="noopener noreferrer">https://example.com</a>
+            <span class="text">サンプルサイト</span>
+        </div>
+    </main>
+
+    <script>
+        const correctPassword = "ここに好きなパスワード";
+
+        const loginArea = document.getElementById("login");
+        const contents = document.getElementById("contents");
+        const passwordInput = document.getElementById("password");
+        const loginButton = document.getElementById("login-button");
+        const error = document.getElementById("error");
+
+        function openArchive() {
+            if (passwordInput.value === correctPassword) {
+                loginArea.style.display = "none";
+                contents.style.display = "block";
+                error.textContent = "";
+                sessionStorage.setItem("unlocked", "yes");
+            } else {
+                error.textContent = "パスワードが違います。";
+                passwordInput.value = "";
+                passwordInput.focus();
+            }
+        }
+
+        if (sessionStorage.getItem("unlocked") === "yes") {
+            loginArea.style.display = "none";
+            contents.style.display = "block";
+        }
+
+        loginButton.addEventListener("click", openArchive);
+
+        passwordInput.addEventListener("keydown", function (event) {
+            if (event.key === "Enter") {
+                openArchive();
+            }
+        });
+    </script>
+
+</body>
+</html>
